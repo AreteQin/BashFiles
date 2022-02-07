@@ -1,5 +1,5 @@
 cd ~
-sudo apt install python3-pip -y
+sudo apt install python3-pip libeigen3-dev -y
 git clone --recursive https://github.com/stevenlovegrove/Pangolin.git
 cd Pangolin 
 
