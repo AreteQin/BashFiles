@@ -3,5 +3,5 @@ cd ~
 mkdir build
 cd build
 cmake ..
-make -j6
+make -j8
 sudo make install
