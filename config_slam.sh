@@ -4,7 +4,7 @@ cd Sophus
 mkdir build
 cd build
 cmake ..
-make -j6
+make -j12
 sudo make install
 cd ~
 sudo apt install liblapack-dev libsuitesparse-dev libcxsparse3 libgflags-dev libgoogle-glog-dev libgtest-dev -y
@@ -13,7 +13,7 @@ cd ceres-solver
 mkdir build
 cd build
 cmake ..
-make -j6
+make -j12
 sudo make install
 cd ~
 sudo apt install libsuitesparse-dev libqglviewer-dev-qt5 -y
@@ -22,7 +22,7 @@ cd g2o
 mkdir build
 cd build
 cmake ..
-make -j6
+make -j12
 sudo make install
 cd ~
 sudo apt install python3-pip libeigen3-dev -y
