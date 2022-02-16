@@ -4,6 +4,3 @@ sudo apt-get install libopencv-dev libsuitesparse-dev libxmu-dev libxi-dev libgl
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
-
-## Token
-## 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
