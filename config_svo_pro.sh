@@ -1,5 +1,6 @@
 cd ~
-mkdir svo_ws && cd svo_ws
+mkdir svo_ws 
+cd svo_ws
 sudo apt-get install python3-catkin-tools python3-vcstool python3-osrf-pycommon -y
 sudo apt-get install libglew-dev libopencv-dev libyaml-cpp-dev  -y
 sudo apt-get install libblas-dev liblapack-dev libsuitesparse-dev -y
