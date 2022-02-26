@@ -1,6 +1,6 @@
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install nvidia-driver-470 -y
+sudo ubuntu-drivers autoinstall
 sudo apt install curl -y
 ## Setup edge
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
