@@ -49,3 +49,6 @@ cd badslam-1.1.0
 cd opengv-master
 mkdir build_RelWithDebInfo && cd build_RelWithDebInfo 
 cmake  -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CUDA_FLAGS="-arch=sm_35" .. 
+make badslam
+
+
