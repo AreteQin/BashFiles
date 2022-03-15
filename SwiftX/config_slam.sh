@@ -66,3 +66,4 @@ sudo apt update -y
 
 sudo apt-get install python3-catkin-tools python3-vcstool python3-osrf-pycommon -y
 
+sudo apt install ros-noetic-octomap-ros ros-noetic-octomap-server ros-noetic-octomap-rviz-plugins -y
