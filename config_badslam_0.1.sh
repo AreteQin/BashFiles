@@ -24,16 +24,6 @@ sudo make install
 cd ..
 cd ..
 
-unzip googletest-master.zip
-cd googletest-master
-mkdir build
-cd build
-cmake .. 
-make -j8
-sudo make install
-cd ..
-cd ..
-
 unzip opengv-master.zip
 cd opengv-master
 mkdir build
