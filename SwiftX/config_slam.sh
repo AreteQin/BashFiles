@@ -1,3 +1,11 @@
+# RealSense
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
+sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main" -u
+sudo apt-get install librealsense2-dkms -y
+sudo apt-get install librealsense2-utils -y
+sudo apt-get install librealsense2-dev -y
+sudo apt-get install librealsense2-dbg -y
+
 cd ~
 git clone https://github.com/strasdat/Sophus.git
 cd Sophus
@@ -6,6 +14,13 @@ cd build
 cmake ..
 make -j12
 sudo make install
+
+cd ~
+git clone https://github.com/laurentkneip/opengv
+cd opengv
+mkdir build && cd build && cmake .. && make -j12
+sudo make install
+
 cd ~
 sudo apt install liblapack-dev libsuitesparse-dev libcxsparse3 libgflags-dev libgoogle-glog-dev libgtest-dev -y
 git clone https://github.com/ceres-solver/ceres-solver.git
@@ -15,6 +30,7 @@ cd build
 cmake ..
 make -j12
 sudo make install
+
 cd ~
 sudo apt install libsuitesparse-dev libqglviewer-dev-qt5 -y
 git clone https://github.com/RainerKuemmerle/g2o.git
@@ -24,18 +40,7 @@ cd build
 cmake ..
 make -j12
 sudo make install
-cd ~
-sudo apt install python3-pip libeigen3-dev -y
-git clone --recursive https://github.com/stevenlovegrove/Pangolin.git
-cd Pangolin 
-# Install dependencies (as described above, or your preferred method)
-./scripts/install_prerequisites.sh recommended
-# Configure and build
-mkdir build && cd build
-cmake ..
-cmake --build .
-# GIVEME THE PYTHON STUFF!!!! (Check the output to verify selected python version)
-cmake --build . -t pypangolin_pip_install
+
 sudo apt install liboctomap-dev octovis
 # Install ROS
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' 
