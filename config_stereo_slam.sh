@@ -36,4 +36,3 @@ cmake ..
 cmake --build .
 # GIVEME THE PYTHON STUFF!!!! (Check the output to verify selected python version)
 cmake --build . -t pypangolin_pip_install
-sudo apt install liboctomap-dev octovis
