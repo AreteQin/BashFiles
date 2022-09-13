@@ -1,9 +1,0 @@
-cd ~
-sudo apt install libsuitesparse-dev libqglviewer-dev-qt5 -y
-git clone https://github.com/RainerKuemmerle/g2o.git
-cd g2o
-mkdir build
-cd build
-cmake ..
-make -j8
-sudo make install
