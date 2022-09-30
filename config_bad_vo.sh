@@ -56,8 +56,9 @@ sudo apt install ros-noetic-desktop-full -y
 ## To automatically configurate ROS environment while opening a new terminal 
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc 
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc 
-echo "#export ROS_IP=192.168.99.120" >> ~/.bashrc 
-echo "#export ROS_MASTER_URI=http://192.168.99.107:11311" >> ~/.bashrc 
+echo "#export ROS_IP=192.168.1.120" >> ~/.bashrc 
+echo "#export ROS_MASTER_URI=http://192.168.1.120:11311" >> ~/.bashrc
+
 source ~/.bashrc 
 sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential -y
 sudo apt update -y
