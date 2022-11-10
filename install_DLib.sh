@@ -1,6 +1,6 @@
 cd ~
 git clone https://github.com/davisking/dlib.git
-cd DLib
+cd dlib
 mkdir build
 cd build
 cmake .. 
