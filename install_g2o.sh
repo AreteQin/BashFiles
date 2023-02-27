@@ -1,3 +1,5 @@
+#! /bin/bash
+
 # install ceres first
 cd ~
 sudo apt install libsuitesparse-dev libqglviewer-dev-qt5 -y
