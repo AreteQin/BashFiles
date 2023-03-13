@@ -22,3 +22,8 @@ sudo apt-get install libopencv-dev libsuitesparse-dev libeigen3-dev cmake python
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
+
+## Install wechat
+cd ~/Downloads
+wget http://archive.ubuntukylin.com/software/pool/partner/weixin_2.1.4_amd64.deb
+sudo dpkg -i weixin_2.1.2_amd64.deb
