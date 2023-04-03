@@ -14,7 +14,7 @@
 # # GIVEME THE PYTHON STUFF!!!! (Check the output to verify selected python version)
 # cmake --build . -t pypangolin_pip_install
 
-## version dm-vio
+## for dm-vio
 sudo apt install libgl1-mesa-dev libglew-dev pkg-config libegl1-mesa-dev libwayland-dev libxkbcommon-dev wayland-protocols
 git clone https://github.com/stevenlovegrove/Pangolin.git
 cd Pangolin
