@@ -1,0 +1,1 @@
+sudo apt install ros-noetic-nmea-msgs libsdl2-dev
