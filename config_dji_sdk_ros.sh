@@ -1,4 +1,4 @@
-sudo apt install ros-${ROS_DISTRO}-nmea-msgs libsdl2-dev
+sudo apt install ros-${ROS_DISTRO}-nmea-msgs libsdl2-dev -y
 cd ~/Downloads
 git clone https://github.com/AreteQin/dji_osdk_410_opencv4.git
 cd dji_osdk_410_opencv4/
