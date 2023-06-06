@@ -3,7 +3,8 @@
 sudo apt update -y
 sudo apt upgrade -y
 sudo ubuntu-drivers autoinstall
-sudo apt install curl -y
+sudo apt install curl wget -y
+timedatectl set-local-rtc 1
 ## Setup edge
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
