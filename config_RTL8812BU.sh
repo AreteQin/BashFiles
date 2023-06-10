@@ -5,4 +5,4 @@ cd RTL8812BU
 make
 sudo make install
 
-#sh -c 'wget deb.trendtechcn.com/install -O /WifiDrivers/install && sh /WifiDrivers/install'
+#wget deb.trendtechcn.com/install -O ./install.sh && sh ./install.sh'
