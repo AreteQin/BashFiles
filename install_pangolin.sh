@@ -9,10 +9,11 @@ cd Pangolin
 # Configure and build
 mkdir build && cd build
 cmake ..
+#cmake .. -DPython_EXECUTABLE=/usr/bin/python3.8 # for Jetson Xavier Ubuntu 20
 cmake --build .
 
 # GIVEME THE PYTHON STUFF!!!! (Check the output to verify selected python version)
-cmake --build . -t pypangolin_pip_install
+# cmake --build . -t pypangolin_pip_install
 
 ## for dm-vio
 # sudo apt install libgl1-mesa-dev libglew-dev pkg-config libegl1-mesa-dev libwayland-dev libxkbcommon-dev wayland-protocols
