@@ -12,7 +12,7 @@ sudo apt install ros-noetic-desktop-full -y
 
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc 
 
-echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc 
+# echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc 
 
 echo "#export ROS_IP=192.168.99.120" >> ~/.bashrc 
 
