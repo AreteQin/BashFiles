@@ -21,6 +21,7 @@ source ~/.bashrc
 
 sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential -y
 
+## For catkin build
 sudo apt-get install ros-melodic-catkin python-catkin-tools
 
 sudo apt install python-rosdep
