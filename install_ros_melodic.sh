@@ -13,9 +13,9 @@ echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc 
 
-echo "#export ROS_IP=192.168.99.120" >> ~/.bashrc 
+echo "#export ROS_IP=192.168.1.12" >> ~/.bashrc 
 
-echo "#export ROS_MASTER_URI=http://192.168.99.107:11311" >> ~/.bashrc 
+echo "#export ROS_MASTER_URI=http://192.168.1.12:11311" >> ~/.bashrc 
 
 source ~/.bashrc 
 
