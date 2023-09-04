@@ -1,6 +1,9 @@
 sudo apt update
 sudo apt install -y build-essential dkms git bc
-git clone -b v5.13.1 https://github.com/fastoe/RTL8812BU.git
+# For x86_64 Ubuntu20
+#git clone -b v5.13.1 https://github.com/fastoe/RTL8812BU.git
+## For iCrest 2
+git clone -b v5.6.1 https://github.com/fastoe/RTL8812BU.git
 cd RTL8812BU
 make
 sudo make install
