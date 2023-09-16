@@ -7,6 +7,8 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 sudo apt update -y
 
 sudo apt install ros-noetic-desktop-full -y
+# for raspberry pi
+#sudo apt install ros-noetic-desktop -y
 
 ## To automatically configurate ROS environment while opening a new terminal 
 
