@@ -6,7 +6,7 @@ sudo apt-get install -y python3-dev python3-pip python3-scipy     python3-matplo
 
 mkdir -p ~/kalibr_workspace/src
 cd ~/kalibr_workspace
-export ROS1_DISTRO=noetic # kinetic=16.04, melodic=18.04, noetic=20.04
+export ROS1_DISTRO=${ROS_DISTRO} # kinetic=16.04, melodic=18.04, noetic=20.04
 source /opt/ros/$ROS1_DISTRO/setup.bash
 catkin init
 catkin config --extend /opt/ros/$ROS1_DISTRO
