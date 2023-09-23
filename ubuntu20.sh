@@ -27,3 +27,6 @@ sudo apt autoremove -y
 cd ~/Downloads
 wget http://archive.ubuntukylin.com/software/pool/partner/weixin_2.1.4_amd64.deb
 sudo dpkg -i weixin*.deb
+
+## Install Nvidia Driver:
+# Select "Using NVIDIA driver metapackage from nvidia-driver-535(proprietary)"
