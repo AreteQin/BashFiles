@@ -30,3 +30,5 @@ sudo dpkg -i weixin*.deb
 
 ## Install Nvidia Driver:
 # Select "Using NVIDIA driver metapackage from nvidia-driver-535(proprietary)"
+# This maybe working
+sudo apt install nvidia-driver-535 -y
