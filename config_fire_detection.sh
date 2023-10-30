@@ -7,5 +7,3 @@ git clone https://github.com/ultralytics/ultralytics.git
 cd ./ultralytics && pip3 install -r requirements.txt
 
 pip3 install ultralytics
-
-sudo apt-get install ros-melodic-jsk-recognition-msgs -y
