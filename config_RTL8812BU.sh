@@ -1,10 +1,12 @@
-sudo apt update
-sudo apt install -y build-essential dkms git bc
 echo "============================================="
-echo "Installing RTL8812BU driverm, choose platform"
+echo "Installing RTL8812BU driver, choose platform"
 echo "(1) x86_64"
 echo "(2) iCrest2"
 read system
+
+sudo apt update
+sudo apt install -y build-essential dkms git bc
+
 case &system in
     "1")
         git clone -b v5.13.1 https://github.com/fastoe/RTL8812BU.git # For x86_64 Ubuntu20
