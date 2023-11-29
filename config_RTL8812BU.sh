@@ -5,7 +5,7 @@ echo "(2) iCrest2"
 read system
 
 sudo apt update
-sudo apt install -y build-essential dkms git bc
+sudo apt install -y build-essential dkms git bc make gcc
 
 case &system in
     "1")
