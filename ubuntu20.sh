@@ -4,6 +4,7 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt install curl wget -y
 timedatectl set-local-rtc 1
+
 # ## Setup edge
 # curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 # sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
@@ -12,6 +13,8 @@ timedatectl set-local-rtc 1
 # ## Install edge
 # sudo apt update
 # sudo apt install microsoft-edge-stable -y
+
+## Install VSCode
 sudo apt install software-properties-common apt-transport-https wget -y
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
