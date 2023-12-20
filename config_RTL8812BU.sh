@@ -9,7 +9,7 @@ sudo apt install -y build-essential dkms git bc make gcc
 
 cd ~ 
 
-case &{system} in
+case ${system} in
     "1")
         git clone -b v5.13.1 https://github.com/fastoe/RTL8812BU.git # For x86_64 Ubuntu20
         ;;

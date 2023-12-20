@@ -4,9 +4,7 @@ echo "(1) x86_64"
 echo "(2) QCar"
 read system
 
-cd ~ 
-
-case &{system} in
+case ${system} in
     "1")
         # For x86_64 
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
