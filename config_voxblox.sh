@@ -1,4 +1,4 @@
-#sudo apt-get install python3-wstool python3-catkin-tools ros-${ROS_DISTRO}-cmake-modules protobuf-compiler autoconf ros-${ROS_DISTRO}-grpc -y
+sudo apt-get install python3-wstool python3-catkin-tools ros-${ROS_DISTRO}-cmake-modules protobuf-compiler autoconf ros-${ROS_DISTRO}-grpc -y
 
 mkdir -p ~/voxblox_ws/src
 cd ~/voxblox_ws
