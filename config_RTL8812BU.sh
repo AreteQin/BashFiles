@@ -1,7 +1,7 @@
 echo "============================================="
 echo "Installing RTL8812BU driver, choose platform"
 echo "(1) x86_64"
-echo "(2) iCrest2"
+echo "(2) Jetson Xavier"
 read system
 
 sudo apt update
@@ -14,7 +14,7 @@ case ${system} in
         git clone -b v5.13.1 https://github.com/fastoe/RTL8812BU.git # For x86_64 Ubuntu20
         ;;
     "2")
-        git clone -b v5.6.1 https://github.com/fastoe/RTL8812BU.git # For iCrest 2 Ubuntu 20
+        git clone -b v5.6.1 https://github.com/fastoe/RTL8812BU.git # For Jetson Xavier Ubuntu 20
         ;;
 esac
 cd RTL8812BU

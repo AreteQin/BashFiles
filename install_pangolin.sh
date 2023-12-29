@@ -1,4 +1,11 @@
 cd ~
+
+echo "============================================="
+echo "Installing Pangolin, choose platform"
+echo "(1) x86_64"
+echo "(2) Jetson Xavier"
+read system
+
 sudo apt install python3-pip libeigen3-dev -y
 git clone --recursive https://github.com/stevenlovegrove/Pangolin.git
 cd Pangolin 
@@ -8,8 +15,16 @@ cd Pangolin
 
 # Configure and build
 mkdir build && cd build
-cmake ..
-#cmake .. -DPython_EXECUTABLE=/usr/bin/python3.8 # for Jetson Xavier Ubuntu 20
+
+case ${system} in
+    "1")
+        cmake ..
+        ;;
+    "2")
+        cmake .. -DPython_EXECUTABLE=/usr/bin/python3.8 # for Jetson Xavier Ubuntu 20
+        ;;
+esac
+
 cmake --build .
 
 # GIVEME THE PYTHON STUFF!!!! (Check the output to verify selected python version)
