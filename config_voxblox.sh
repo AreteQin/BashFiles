@@ -8,9 +8,13 @@ catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release
 catkin config --merge-devel
 
 cd ~/voxblox_ws/src/
-git clone git@github.com:ethz-asl/voxblox.git
+git clone git@github.com:AreteQin/voxblox.git
 wstool init . ./voxblox/voxblox_ssh.rosinstall
 wstool update
+
+echo "============================================="
+echo "Copy grpc files to "~/voxblox_ws/build/" and hit Enter to continue"
+read grpc
 
 cd ~/voxblox_ws/src/
 catkin build voxblox_ros
