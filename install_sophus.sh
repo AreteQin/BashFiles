@@ -6,7 +6,7 @@ case ${cuda} in
         echo "Downloading Sophus..."
         ;;
     "n")
-        echo "Please install CUDA and Ceresfirst"
+        echo "Please install CUDA and Ceres first"
         echo "Exiting..."
         exit
         ;;
@@ -18,7 +18,28 @@ cd Sophus
 mkdir build
 cd build
 
-echo "Have you modified the CMakeLists.txt? (y/n) "
+echo "Have you added the following code into the CMakeLists.txt? (y/n) "
+echo "find_package(CUDA REQUIRED)"
+echo "if (CUDA_FOUND)"
+echo "   enable_language(CUDA)"
+echo "    macro(DECLARE_IMPORTED_CUDA_TARGET COMPONENT)"
+echo "        add_library(CUDA::${COMPONENT} INTERFACE IMPORTED)"
+echo "        target_include_directories("
+echo "                CUDA::${COMPONENT} INTERFACE ${CUDA_INCLUDE_DIRS})"
+echo "        target_link_libraries("
+echo "                CUDA::${COMPONENT} INTERFACE ${CUDA_${COMPONENT}_LIBRARY} ${ARGN})"
+echo "    endmacro()"
+echo "    declare_imported_cuda_target(cublas)"
+echo "    declare_imported_cuda_target(cusolver)"
+echo "    declare_imported_cuda_target(cusparse)"
+echo "    declare_imported_cuda_target(cudart ${CUDA_LIBRARIES})"
+echo "   set(CUDAToolkit_BIN_DIR ${CUDA_TOOLKIT_ROOT_DIR}/bin)"
+echo "else (CUDA_FOUND)"
+echo "    message("-- Did not find CUDA, disabling CUDA support.")"
+echo "    update_cache_variable(USE_CUDA OFF)"
+echo "endif (CUDA_FOUND)"
+echo "set(CUDA_ADD_CUBLAS_TO_TARGET ON)"
+
 read modified
 
 case ${modified} in
@@ -30,5 +51,6 @@ case ${modified} in
         ;;
     "n")
         echo "Exiting..."
+        exit
         ;;
 esac

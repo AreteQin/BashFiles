@@ -16,5 +16,6 @@ case ${cuda} in
     "n")
         echo "Please install CUDA first"
         echo "Exiting..."
+        exit
         ;;
 esac
