@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "Have you installed CUDA and Ceres manually? (y/n) "
 read cuda
@@ -25,15 +25,15 @@ echo "find_package(CUDA REQUIRED)"
 echo "if (CUDA_FOUND)"
 echo "   enable_language(CUDA)"
 echo "    macro(DECLARE_IMPORTED_CUDA_TARGET COMPONENT)"
-echo "        add_library(CUDA::${COMPONENT} INTERFACE IMPORTED)"
-echo "        target_include_directories(CUDA::${COMPONENT} INTERFACE ${CUDA_INCLUDE_DIRS})"
-echo "        target_link_libraries(CUDA::${COMPONENT} INTERFACE ${CUDA_${COMPONENT}_LIBRARY} ${ARGN})"
+echo "        add_library(CUDA::\${COMPONENT} INTERFACE IMPORTED)"
+echo "        target_include_directories(CUDA::\${COMPONENT} INTERFACE \${CUDA_INCLUDE_DIRS})"
+echo "        target_link_libraries(CUDA::\${COMPONENT} INTERFACE \${CUDA_\${COMPONENT}_LIBRARY} \${ARGN})"
 echo "    endmacro()"
 echo "    declare_imported_cuda_target(cublas)"
 echo "    declare_imported_cuda_target(cusolver)"
 echo "    declare_imported_cuda_target(cusparse)"
-echo "    declare_imported_cuda_target(cudart ${CUDA_LIBRARIES})"
-echo "   set(CUDAToolkit_BIN_DIR ${CUDA_TOOLKIT_ROOT_DIR}/bin)"
+echo "    declare_imported_cuda_target(cudart \${CUDA_LIBRARIES})"
+echo "   set(CUDAToolkit_BIN_DIR \${CUDA_TOOLKIT_ROOT_DIR}/bin)"
 echo "else (CUDA_FOUND)"
 echo "    message("-- Did not find CUDA, disabling CUDA support.")"
 echo "    update_cache_variable(USE_CUDA OFF)"
