@@ -8,6 +8,7 @@ case ${cuda} in
     "n")
         echo "Please install CUDA and Ceresfirst"
         echo "Exiting..."
+        exit
         ;;
 esac
 
