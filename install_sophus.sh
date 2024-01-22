@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo "Have you installed CUDA and Ceres manually? (y/n) "
 read cuda
