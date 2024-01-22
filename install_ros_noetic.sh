@@ -1,3 +1,9 @@
+echo "============================================="
+echo "Installing ROS Noetic, choose platform"
+echo "(1) x86_64 or Jetson"
+echo "(2) Raspberry Pi"
+read system
+
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' 
 
 sudo apt install curl -y # if you haven't already installed curl 
@@ -6,9 +12,14 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 
 sudo apt update -y
 
-sudo apt install ros-noetic-desktop-full -y
-# for raspberry pi
-#sudo apt install ros-noetic-desktop -y
+case ${system} in
+    "1")
+        sudo apt install ros-noetic-desktop-full -y
+        ;;
+    "2")
+        sudo apt install ros-noetic-desktop -y
+        ;;
+esac
 
 ## To automatically configurate ROS environment while opening a new terminal 
 
