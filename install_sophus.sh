@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Have you installed CUDA and Ceres manually? (y/n) "
 read cuda
 
@@ -18,7 +20,6 @@ cd Sophus
 mkdir build
 cd build
 
-echo "Have you added the following code into the CMakeLists.txt? (y/n) "
 echo "find_package(CUDA REQUIRED)"
 echo "if (CUDA_FOUND)"
 echo "   enable_language(CUDA)"
@@ -39,6 +40,8 @@ echo "    message("-- Did not find CUDA, disabling CUDA support.")"
 echo "    update_cache_variable(USE_CUDA OFF)"
 echo "endif (CUDA_FOUND)"
 echo "set(CUDA_ADD_CUBLAS_TO_TARGET ON)"
+echo "============================================="
+echo "Have you added the above code into the CMakeLists.txt? (y/n) "
 
 read modified
 
