@@ -20,15 +20,14 @@ cd Sophus
 mkdir build
 cd build
 
+echo "============================================="
 echo "find_package(CUDA REQUIRED)"
 echo "if (CUDA_FOUND)"
 echo "   enable_language(CUDA)"
 echo "    macro(DECLARE_IMPORTED_CUDA_TARGET COMPONENT)"
 echo "        add_library(CUDA::${COMPONENT} INTERFACE IMPORTED)"
-echo "        target_include_directories("
-echo "                CUDA::${COMPONENT} INTERFACE ${CUDA_INCLUDE_DIRS})"
-echo "        target_link_libraries("
-echo "                CUDA::${COMPONENT} INTERFACE ${CUDA_${COMPONENT}_LIBRARY} ${ARGN})"
+echo "        target_include_directories(CUDA::${COMPONENT} INTERFACE ${CUDA_INCLUDE_DIRS})"
+echo "        target_link_libraries(CUDA::${COMPONENT} INTERFACE ${CUDA_${COMPONENT}_LIBRARY} ${ARGN})"
 echo "    endmacro()"
 echo "    declare_imported_cuda_target(cublas)"
 echo "    declare_imported_cuda_target(cusolver)"
