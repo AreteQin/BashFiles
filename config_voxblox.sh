@@ -16,5 +16,14 @@ echo "============================================="
 echo "Copy grpc files to "~/voxblox_ws/build/" and hit Enter to continue"
 read grpc
 
-cd ~/voxblox_ws/src/
-catkin build voxblox_ros
+case ${grpc} in
+    "y")
+        cd ~/voxblox_ws/src/
+        catkin build voxblox_ros
+        ;;
+    "n")
+        echo "Please download required files first"
+        echo "Exiting..."
+        exit
+        ;;
+esac
