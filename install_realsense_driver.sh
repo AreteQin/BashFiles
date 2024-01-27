@@ -4,8 +4,6 @@ echo "(1) x86_64"
 echo "(2) QCar"
 read system
 
-sudo apt install ros-${ROS_DISTRO}-rgbd-launch ros-${ROS_DISTRO}-realsense2-camera -y
-
 case ${system} in
     "1")
         # For x86_64 
@@ -23,3 +21,5 @@ case ${system} in
         sudo apt-get install librealsense2-dkms -y
         ;;
 esac
+
+sudo apt install ros-${ROS_DISTRO}-rgbd-launch ros-${ROS_DISTRO}-realsense2-camera -y
