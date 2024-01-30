@@ -42,6 +42,8 @@ echo "set(CUDA_ADD_CUBLAS_TO_TARGET ON)"
 echo "============================================="
 echo "Have you added the above code into the CMakeLists.txt? (y/n) "
 
+gedit ../CMakeLists.txt
+
 read modified
 
 case ${modified} in
