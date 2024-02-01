@@ -1,4 +1,4 @@
-echo "Have you installed CUDA manually? (y/n) "
+echo "Have you installed CUDA? (y/n) "
 read cuda
 
 case ${cuda} in
