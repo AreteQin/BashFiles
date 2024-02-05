@@ -1,3 +1,4 @@
-echo "Add the following to your ~/.bashrc file"
-echo "export PATH=/usr/local/cuda-11.6/bin\${PATH:+:\${PATH}}"
-echo "export LD_LIBRARY_PATH=/usr/local/cuda-11.6/lib64\${LD_LIBRARY_PATH:+:\${LD_LIBRARY_PATH}}"
+echo "============================================="
+echo export ROS_PACKAGE_PATH=\${ROS_PACKAGE_PATH}:~/ORB_SLAM3_Ubuntu_20/Examples_old/ROS
+echo "============================================="
+echo "Please add the above code into the ~/.bashrc? (y/n) "
