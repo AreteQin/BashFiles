@@ -12,4 +12,4 @@ sudo apt upgrade -y
 sudo apt install ros-humble-desktop -y
 sudo apt install ros-dev-tools
 
-echo "source /opt/ros/humble/setup.bashh" >> ~/.bashrc 
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc 
