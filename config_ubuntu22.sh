@@ -4,9 +4,6 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt install curl wget -y
 
-# set correct time for dual boot
-timedatectl set-local-rtc 1
-
 ## Chinese input
 sudo apt-get install ibus-libpinyin -y
 ibus-daemon -d -x -r
