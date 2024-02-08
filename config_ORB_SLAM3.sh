@@ -10,7 +10,8 @@ gedit ~/.bashrc
 
 read modified
 
-source ~/.bashrc
+source /opt/ros/noetic/setup.bash
+export ROS_PACKAGE_PATH=\${ROS_PACKAGE_PATH}:~/ORB_SLAM3_Ubuntu_20/Examples_old/ROS
 
 cd ~
 
