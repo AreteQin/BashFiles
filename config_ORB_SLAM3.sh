@@ -10,6 +10,8 @@ gedit ~/.bashrc
 
 read modified
 
+source ~/.bashrc
+
 cd ~
 
 git clone https://github.com/AreteQin/ORB_SLAM3_Ubuntu_20.git
