@@ -1,3 +1,14 @@
+echo "============================================="
+echo "Note that you may need to use VPN to connect to ROS server, continue? [y/n]"
+read continue
+
+case ${continue} in
+    "n")
+        echo "Exiting..."
+        exit
+        ;;
+esac
+
 locale  # check for UTF-8
 
 sudo apt update && sudo apt install locales
@@ -49,8 +60,8 @@ vcs import --input https://raw.githubusercontent.com/ros2/ros2/foxy/ros2.repos s
 
 sudo apt upgrade
 
-sudo rosdep init
-rosdep update
+sudo rosdep init && rosdep update
 rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-5.3.1 urdfdom_headers"
 
+source ~/.bashrc
 colcon build --symlink-install
