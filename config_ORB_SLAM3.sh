@@ -25,4 +25,7 @@ sudo ldconfig
 
 bash ./build.sh
 
-bash ./build_ros.sh
+echo "============================================="
+echo "Please mannually run the following command:"
+echo cd ~/ORB_SLAM3_Ubuntu_20/ && ./build_ros.sh
+echo "============================================="
