@@ -38,3 +38,5 @@ sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator 
 sudo apt update -y
 
 sudo apt-get install python3-catkin-tools python3-vcstool python3-osrf-pycommon -y
+
+sudo rosdep init && rosdep update
