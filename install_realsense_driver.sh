@@ -22,4 +22,5 @@ case ${system} in
         ;;
 esac
 
-sudo apt install ros-${ROS_DISTRO}-rgbd-launch ros-${ROS_DISTRO}-realsense2-camera -y
+sudo apt install ros-${ROS_DISTRO}-rgbd-launch -y
+sudo apt install ros-${ROS_DISTRO}-realsense2-camera -y
