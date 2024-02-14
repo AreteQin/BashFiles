@@ -9,7 +9,7 @@ case ${continue} in
         ;;
 esac
 
-sudo apt-get install python3-rosdep python3-rosinstall-generator python3-vcstools python3-vcstool build-essential
+sudo apt-get install python3-rosdep python3-rosinstall-generator python3-vcstools python3-vcstool build-essential -y
 
 sudo rosdep init
 rosdep update
