@@ -1,6 +1,18 @@
 # CUDA
+
+echo "============================================="
+echo "Have you downloaded CUDA installer? [y/n]"
+read cuda
+
 cd ~/Downloads
-wget https://developer.download.nvidia.com/compute/cuda/11.6.0/local_installers/cuda_11.6.0_510.39.01_linux.run
+
+case ${cuda} in
+    "n")
+        echo "Downloading..."
+        wget https://developer.download.nvidia.com/compute/cuda/11.6.0/local_installers/cuda_11.6.0_510.39.01_linux.run
+        ;;
+esac
+
 sudo sh cuda_11.6.0_510.39.01_linux.run
 
 # Add CUDA to bashrc
