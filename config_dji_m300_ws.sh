@@ -1,5 +1,12 @@
+echo "============================================="
+echo "Choose your platform"
+echo "(1) x86_64"
+echo "(2) Jetson"
+read system
+
+. /opt/ros/noetic/setup.bash
 sudo apt install ros-${ROS_DISTRO}-nmea-msgs libsdl2-dev -y
-sudo apt install ros-noetic-rosserial-msgs -y
+sudo apt install ros-${ROS_DISTRO}-rosserial-msgs -y
 pip3 install pyserial
 cd ~/Downloads
 git clone https://github.com/AreteQin/dji_osdk_410_opencv4.git
@@ -10,6 +17,13 @@ cd ~
 git clone https://github.com/AreteQin/m300_ws.git
 
 # for Yolo
-sudo apt install python3-pip -y
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-pip3 install ultralytics
+case ${system} in
+    "1")
+        sudo apt install python3-pip -y
+        pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+        pip3 install ultralytics
+        ;;
+    "2")
+        wget files.seeedstudio.com/YOLOv8-Jetson.py && python3 YOLOv8-Jetson.py
+        ;;
+esac
