@@ -5,6 +5,7 @@ echo "(2) Jetson Xavier"
 read system
 
 sudo apt update
+sudo apt upgrade -y
 sudo apt install -y build-essential dkms git bc make gcc
 
 cd ~ 
