@@ -1,7 +1,8 @@
 echo "============================================="
-echo "Choose your platform"
+echo "Choose your platform for pytorch installation"
 echo "(1) x86_64"
 echo "(2) Jetson"
+echo "(3) Skip installation for pytorch"
 read system
 
 . /opt/ros/noetic/setup.bash
@@ -25,5 +26,10 @@ case ${system} in
         ;;
     "2")
         wget files.seeedstudio.com/YOLOv8-Jetson.py && python3 YOLOv8-Jetson.py
+        ;;
+    "3")
+        echo "Skip installation for pytorch"
+        echo "Exiting..."
+        exit
         ;;
 esac
