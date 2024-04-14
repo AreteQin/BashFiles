@@ -26,6 +26,7 @@ case ${system} in
 esac
 
 cmake --build .
+sudo make install
 
 # GIVEME THE PYTHON STUFF!!!! (Check the output to verify selected python version)
 # cmake --build . -t pypangolin_pip_install

@@ -6,13 +6,13 @@ echo "(3) Skip installation for pytorch"
 read system
 
 . /opt/ros/noetic/setup.bash
-sudo apt install ros-${ROS_DISTRO}-nmea-msgs libsdl2-dev -y
+sudo apt install ros-${ROS_DISTRO}-nmea-msgs libsdl2-dev libgoogle-glog-dev -y
 sudo apt install ros-${ROS_DISTRO}-rosserial-msgs -y
+sudo apt install ros-noetic-${ROS_DISTRO}-msgs
 pip3 install pyserial
 cd ~/Downloads
 git clone https://github.com/AreteQin/dji_osdk_410_opencv4.git
-cd dji_osdk_410_opencv4/
-mkdir build && cd build && cmake -DADVANCED_SENSING=ON .. && make -j4
+cd dji_osdk_410_opencv4/ && mkdir build && cd build && cmake -DADVANCED_SENSING=ON .. && make -j4
 sudo make install
 cd ~
 git clone https://github.com/AreteQin/m300_ws.git
