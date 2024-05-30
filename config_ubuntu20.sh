@@ -17,8 +17,7 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
 
-git config --global user.email "qinqiaomeng@outlook.com"
-git config --global user.name "qin"
+git config --global user.email "qinqiaomeng@outlook.com" && git config --global user.name "qin"
 
 ## Install Nvidia Driver:
 # Select "Using NVIDIA driver metapackage from nvidia-driver-535(proprietary)"
