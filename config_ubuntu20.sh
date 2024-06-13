@@ -1,5 +1,11 @@
 #! /bin/bash
 
+echo "============================================="
+echo "Where are located?"
+echo "(1) China"
+echo "(2) Canada"
+read location
+
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt install curl wget -y
@@ -23,3 +29,13 @@ git config --global user.email "qinqiaomeng@outlook.com" && git config --global 
 # Select "Using NVIDIA driver metapackage from nvidia-driver-535(proprietary)"
 # This maybe working
 sudo apt install nvidia-driver-535 -y
+
+## for Python source
+case ${location} in
+    "1")
+        pip3 config set global.i	ndex-url https://pypi.tuna.tsinghua.edu.cn/simple
+        ;;
+    "2")
+        echo "Done!"
+        ;;
+esac
