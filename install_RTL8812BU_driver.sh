@@ -13,7 +13,7 @@ cd ~
 case ${system} in
     "1")
         #git clone -b v5.13.1 https://github.com/fastoe/RTL8812BU.git # For x86_64 Ubuntu20
-        git clone git@github.com:morrownr/88x2bu-20210702.git
+        git clone https://github.com/morrownr/88x2bu-20210702.git
         cd 88x2bu-20210702/
         sudo ./install-driver.sh
         ;;
