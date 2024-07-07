@@ -27,5 +27,5 @@ bash ./build.sh
 
 echo "============================================="
 echo "Please mannually run the following command:"
-echo cd ~/ORB_SLAM3_Ubuntu_20/ && ./build_ros.sh
+echo "cd ~/ORB_SLAM3_Ubuntu_20/ && ./build_ros.sh"
 echo "============================================="
