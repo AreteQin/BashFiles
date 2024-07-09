@@ -20,6 +20,7 @@ cd Sophus
 mkdir build
 cd build
 
+echo "Add the code below into the CMakeLists.txt. Also check the CMake version and Eigen version. "
 echo "============================================="
 echo "find_package(CUDA REQUIRED)"
 echo "if (CUDA_FOUND)"
@@ -41,6 +42,7 @@ echo "endif (CUDA_FOUND)"
 echo "set(CUDA_ADD_CUBLAS_TO_TARGET ON)"
 echo "============================================="
 echo "Have you added the above code into the CMakeLists.txt? (y/n) "
+echo "This installation requires a lot of memory, please make sure you have turn off Clion and browser!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 gedit ../CMakeLists.txt
 
@@ -50,7 +52,7 @@ case ${modified} in
     "y")
         sudo apt install libfmt-dev -y
         cmake ..
-        make -j6
+        make -j4
         sudo make install
         ;;
     "n")
