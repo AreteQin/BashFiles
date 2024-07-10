@@ -2,7 +2,8 @@ echo "============================================="
 echo "Installing Intel Realsense driver, choose platform"
 echo "(1) x86_64 with Ubuntu lower than 24.04"
 echo "(2) x86_64 with Ubuntu 24.04"
-echo "(3) QCar or Raspberry Pi"
+echo "(3) QCar"
+echo "(4) Raspberry Pi 5"
 read system
 
 case ${system} in
@@ -27,6 +28,12 @@ case ${system} in
         sudo apt-get install librealsense2-dbg -y
         sudo apt-get install librealsense2-dkms -y
         ;;
+    "4")
+        # for Raspberry Pi 5
+        sudo apt install wget -y
+        wget https://github.com/IntelRealSense/librealsense/raw/master/scripts/libuvc_installation.sh
+        chmod +x ./libuvc_installation.sh
+        ./libuvc_installation.sh
 esac
 
 sudo apt install ros-${ROS_DISTRO}-rgbd-launch -y
