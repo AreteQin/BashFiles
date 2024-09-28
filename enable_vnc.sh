@@ -37,3 +37,16 @@ Section "Screen"
     Modes "1024x800"
     EndSubSection
 EndSection
+
+Section "Module"
+    Disable     "dri"
+    SubSection  "extmod"
+    Option  "omit xfree86-dga"
+    EndSubSection
+EndSection
+
+Section "Device"
+    Identifier  "Tegra0"
+    Driver      "nvidia"
+    Option      "AllowEmptyInitialConfiguration" "true"
+EndSection
