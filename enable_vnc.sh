@@ -1,13 +1,17 @@
+# Enabling automatic login
+echo "Modify the following in your /etc/gdm3/custom.conf file"
+echo "============================================="
+echo "AutomaticLoginEnable = true"
+echo "AutomaticLogin = qin"
+
 sudo vim /etc/gdm3/custom.conf
 
-# Enabling automatic login
-AutomaticLoginEnable = true
-AutomaticLogin = qin
 sudo apt-get install xserver-xorg-video-dummy
 
-sudo vim /etc/X11/xorg.conf
+cd /etc/X11
+sudo mv xorg.conf xorg.conf.backup
 
-section "Module"
+echo 'Section "Module"
         Disable "dri"
         SubSection "extmod"
                 Option "Omit xfree86-dga"
@@ -36,34 +40,4 @@ Section "Screen"
     Depth 24
     Modes "1024x800"
     EndSubSection
-EndSection
-
-## Ubunu 18
-cd /usr/lib/systemd/user/graphical-session.target.wants
-
-sudo ln -s ../vino-server.service ./.
-
-gsettings set org.gnome.Vino prompt-enabled false
-
-gsettings set org.gnome.Vino require-encryption false
-
-gsettings set org.gnome.Vino authentication-methods "['vnc']"
-
-gsettings set org.gnome.Vino vnc-password $(echo -n 'nvidia'|base64)
-
-sudo reboot
-
-origin:
-
-Section "Module"
-    Disable     "dri"
-    SubSection  "extmod"
-    Option  "omit xfree86-dga"
-    EndSubSection
-EndSection
-
-Section "Device"
-    Identifier  "Tegra0"
-    Driver      "nvidia"
-    Option      "AllowEmptyInitialConfiguration" "true"
-EndSection
+EndSection' > xorg.conf
