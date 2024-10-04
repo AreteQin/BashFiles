@@ -11,7 +11,7 @@ sudo vim /etc/gdm3/custom.conf
 
 sudo apt-get install xserver-xorg-video-dummy
 
-sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.backup
+sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf_backup
 
 echo 'Section "Module"
         Disable "dri"
@@ -19,17 +19,20 @@ echo 'Section "Module"
                 Option "Omit xfree86-dga"
         EndSubSection
 EndSection
+
 Section "Device"
     Identifier  "Configured Video Device"
     Driver      "dummy"
     # Default is 4MiB, this sets it to 16MiB
     VideoRam    16384
 EndSection
+
 Section "Monitor"
     Identifier  "Configured Monitor"
     HorizSync 31.5-48.5
     VertRefresh 50-70
 EndSection
+
 Section "Screen"
     Identifier  "Default Screen"
     Monitor     "Configured Monitor"
