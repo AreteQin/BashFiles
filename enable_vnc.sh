@@ -11,10 +11,9 @@ sudo vim /etc/gdm3/custom.conf
 
 sudo apt-get install xserver-xorg-video-dummy
 
-cd /etc/X11
-sudo mv xorg.conf xorg.conf.backup
+sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.backup
 
-sudo echo 'Section "Module"
+echo 'Section "Module"
         Disable "dri"
         SubSection "extmod"
                 Option "Omit xfree86-dga"
@@ -40,4 +39,6 @@ Section "Screen"
     Depth 24
     Modes "1024x800"
     EndSubSection
-EndSection' > ./xorg.conf
+EndSection' > ~/xorg.conf
+
+sudo mv ~/xorg.conf /etc/X11/xorg.conf
