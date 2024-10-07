@@ -11,15 +11,21 @@ sudo vim /etc/gdm3/custom.conf
 
 sudo apt install vino xserver-xorg-video-dummy -y
 
+echo "============================================"
 echo "Set a password for screen sharing！"
 echo "Press any key to continue..."
 read -n 1 -s
 
 gsettings set org.gnome.Vino require-encryption false
 
-sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf_backup
-
-echo 'Section "Module"
+cat << EOF
+============================================
+Replace orignal content with the following in your /etc/X11/xorg.conf file
+============================================
+This is line one.
+This is line two.
+This is line three.
+Section "Module"
         Disable "dri"
         SubSection "extmod"
                 Option "Omit xfree86-dga"
@@ -48,7 +54,8 @@ Section "Screen"
     Depth 24
     Modes "1024x800"
     EndSubSection
-EndSection' > ~/xorg.conf
+EndSection
+============================================
+EOF
 
-sudo mv ~/xorg.conf /etc/X11/xorg.conf
-sudo chmod +x /etc/X11/xorg.conf
+sudo vim /etc/X11/xorg.conf
