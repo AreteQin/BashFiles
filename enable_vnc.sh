@@ -1,5 +1,5 @@
 # Enabling automatic login
-echo "Modify the following in your /etc/gdm3/custom.conf file according to your username"
+echo "Modify the following in your /etc/gdm3/custom.conf file according to your [username]"
 echo "============================================="
 echo "AutomaticLoginEnable = true"
 echo "AutomaticLogin = qin"
