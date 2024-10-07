@@ -56,6 +56,9 @@ Section "Screen"
     EndSubSection
 EndSection
 ============================================
+Press any key to continue...
 EOF
+
+read -n 1 -s
 
 sudo vim /etc/X11/xorg.conf
