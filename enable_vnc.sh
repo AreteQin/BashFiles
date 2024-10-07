@@ -9,7 +9,13 @@ read -n 1 -s
 
 sudo vim /etc/gdm3/custom.conf
 
-sudo apt-get install xserver-xorg-video-dummy
+sudo apt install vino xserver-xorg-video-dummy -y
+
+echo "Set a password for screen sharing！"
+echo "Press any key to continue..."
+read -n 1 -s
+
+gsettings set org.gnome.Vino require-encryption false
 
 sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf_backup
 
@@ -45,3 +51,4 @@ Section "Screen"
 EndSection' > ~/xorg.conf
 
 sudo mv ~/xorg.conf /etc/X11/xorg.conf
+sudo chmod +x /etc/X11/xorg.conf
