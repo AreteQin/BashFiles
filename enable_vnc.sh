@@ -22,9 +22,6 @@ cat << EOF
 ============================================
 Replace orignal content with the following in your /etc/X11/xorg.conf file
 ============================================
-This is line one.
-This is line two.
-This is line three.
 Section "Module"
         Disable "dri"
         SubSection "extmod"
