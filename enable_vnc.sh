@@ -59,3 +59,6 @@ EOF
 read -n 1 -s
 
 sudo vim /etc/X11/xorg.conf
+
+echo "============================================"
+echo "Now you can use VNC viewer to connect to your Ubuntu!"

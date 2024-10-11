@@ -22,3 +22,6 @@ case ${system} in
         sudo apt-get update && sudo apt-get install cloudflare-warp -y
         ;;
 esac
+
+echo "============================================="
+echo "CloudFlare installed!"

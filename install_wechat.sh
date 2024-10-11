@@ -22,3 +22,6 @@ case ${system} in
         echo "Ubuntu 22 not tested yet"
         ;;
 esac
+
+echo "============================================="
+echo "WeChat installed!"

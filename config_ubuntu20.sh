@@ -80,6 +80,8 @@ fi
 # This maybe working
 if [ ${nvidia} == "y" ]; then
     sudo apt install nvidia-driver-535 -y
+    echo "============================================="
+    echo "Nvidia driver is installed!"
 fi
 
 ## Install VSCode:
@@ -90,6 +92,8 @@ fi
 ## Install Clion:
 if [ ${clion} == "y" ]; then
     sudo snap install clion --classic
+    echo "============================================="
+    echo "CLion installed!"
 fi
 
 ## Install WeChat:
