@@ -1,5 +1,20 @@
 #! /bin/bash
 
+codename=$(lsb_release -c | awk '{print $2}')
+
+case $codename in
+    "impish")
+        echo "Ubuntu 22.04 LTS"
+        ;;
+    "focal")
+        echo "Ubuntu 20.04 LTS"
+        ;;
+    "*")
+        echo "Not supported Ubuntu version!"
+        exit
+        ;;
+esac
+
 echo "============================================="
 echo "Where are located?"
 echo "(1) China"

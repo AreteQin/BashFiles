@@ -1,8 +1,17 @@
-echo "============================================="
-echo "Configure cloudflare? (y/n)"
-read cloudflare
+#! /bin/bash
 
-cd ~/Downloads/BashFiles/
-if [ "$cloudflare" == "y" ]; then
-    bash ./install_cloudflare.sh
-fi
+codename=$(lsb_release -c | awk '{print $2}')
+
+case $codename in
+    "impish")
+        echo "Ubuntu 22.04 LTS"
+        ;;
+    "focal")
+        echo "Ubuntu 20.04 LTS"
+        ;;
+    "bionic")
+        echo "Ubuntu 18.04 LTS"
+        echo "Not supported!"
+        exit
+        ;;
+esac
