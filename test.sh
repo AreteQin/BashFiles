@@ -1,5 +1,8 @@
-cat << EOF
-This is line one.
-This is line two.
-This is line three.
-EOF
+echo "============================================="
+echo "Configure cloudflare? (y/n)"
+read cloudflare
+
+cd ~/Downloads/BashFiles/
+if [ "$cloudflare" == "y" ]; then
+    bash ./install_cloudflare.sh
+fi
