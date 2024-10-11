@@ -119,11 +119,11 @@ fi
 if [ ${tailscale} == "y" ]; then
     curl -fsSL https://tailscale.com/install.sh | sh
     sudo tailscale up
+    echo "============================================="
+    echo "Tailscale installed. Please use the link above to login. "
+    echo "When done, press any key to continue..."
+    read -n 1 -s
 fi
-echo "============================================="
-echo "Tailscale installed. Please use the link above to login. "
-echo "When done, press any key to continue..."
-read -n 1 -s
 
 ## Configure cloudflare:
 if [ ${cloudflare} == "y" ]; then
