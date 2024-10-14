@@ -23,9 +23,9 @@
 
 ## Method 2: https://helpcenter.onlyoffice.com/installation/docs-community-install-from-snap.aspx?_ga=2.24912700.782359554.1594636128-1157782750.1587541027
 sudo snap install onlyoffice-ds
+google-chrome http://localhost
 sudo snap set onlyoffice-ds onlyoffice.example-enabled=true
 echo "============================================="
-echo "Now you can enter http://localhost to open it."
-echo "============================================="
+echo "ONLYOFFICE Docs installed!"
 
 ## Method 3: https://helpcenter.onlyoffice.com/installation/docs-community-install-script.aspx
