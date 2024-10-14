@@ -61,6 +61,10 @@ echo "============================================="
 echo "Install Tailscale? (y/n)"
 read tailscale
 
+echo "============================================="
+echo "Install Office? (y/n)"
+read office
+
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
@@ -128,6 +132,11 @@ fi
 ## Configure cloudflare:
 if [ ${cloudflare} == "y" ]; then
     bash ./install_cloudflare.sh
+fi
+
+## Install Office:
+if [ ${office} == "y" ]; then
+    bash ./install_onlyoffice.sh
 fi
 
 ## for Python source

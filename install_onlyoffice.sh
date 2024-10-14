@@ -24,6 +24,8 @@
 ## Method 2: https://helpcenter.onlyoffice.com/installation/docs-community-install-from-snap.aspx?_ga=2.24912700.782359554.1594636128-1157782750.1587541027
 sudo snap install onlyoffice-ds
 sudo snap set onlyoffice-ds onlyoffice.example-enabled=true
-## Now you can enter http://localhost to open it.
+echo "============================================="
+echo "Now you can enter http://localhost to open it."
+echo "============================================="
 
 ## Method 3: https://helpcenter.onlyoffice.com/installation/docs-community-install-script.aspx
