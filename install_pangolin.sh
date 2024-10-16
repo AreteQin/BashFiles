@@ -6,7 +6,7 @@ echo "(1) x86_64"
 echo "(2) Jetson Xavier"
 read system
 
-sudo apt install python3-pip libeigen3-dev -y
+sudo apt install python3-pip libeigen3-dev libepoxy-dev -y
 git clone --recursive https://github.com/stevenlovegrove/Pangolin.git
 cd Pangolin 
 
