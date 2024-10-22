@@ -15,10 +15,9 @@ esac
 
 sudo sh cuda_11.6.0_510.39.01_linux.run
 
-# Add CUDA to bashrc
-echo "Add the following to your ~/.bashrc file"
-echo "============================================="
-echo "export PATH=/usr/local/cuda-11.6/bin\${PATH:+:\${PATH}}"
-echo "export LD_LIBRARY_PATH=/usr/local/cuda-11.6/lib64\${LD_LIBRARY_PATH:+:\${LD_LIBRARY_PATH}}"
+# Append CUDA paths to ~/.bashrc
+echo "export PATH=/usr/local/cuda-11.6/bin\${PATH:+:\${PATH}}" >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=/usr/local/cuda-11.6/lib64\${LD_LIBRARY_PATH:+:\${LD_LIBRARY_PATH}}" >> ~/.bashrc
 
-gedit ~/.bashrc
+# Reload ~/.bashrc to apply changes
+source ~/.bashrc

@@ -65,6 +65,14 @@ echo "============================================="
 echo "Install Office? (y/n)"
 read office
 
+echo "============================================="
+echo "Install CUDA? (y/n)"
+read cuda
+
+echo "============================================="
+echo "Install QT5? (y/n)"
+read qt5
+
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
@@ -137,6 +145,16 @@ fi
 ## Install Office:
 if [ ${office} == "y" ]; then
     bash ./install_onlyoffice.sh
+fi
+
+## Install CUDA:
+if [ ${cuda} == "y" ]; then
+    bash ./install_cuda.sh
+fi
+
+## Install Qt5:
+if [ ${qt5} == "y" ]; then
+    echo "install Qt5 not yet supported"
 fi
 
 ## for Python source
