@@ -7,9 +7,10 @@ read system
 
 . /opt/ros/noetic/setup.bash
 sudo apt install ros-${ROS_DISTRO}-nmea-msgs libsdl2-dev libgoogle-glog-dev -y
-sudo apt install ros-${ROS_DISTRO}-rosserial-msgs -y
-sudo apt install ros-noetic-${ROS_DISTRO}-msgs
+sudo apt install ros-${ROS_DISTRO}-rosserial-msgs ros-noetic-${ROS_DISTRO}-msgs -y
+
 pip3 install pyserial
+
 cd ~/Downloads
 git clone https://github.com/AreteQin/dji_osdk_410_opencv4.git
 cd dji_osdk_410_opencv4/ && mkdir build && cd build && cmake -DADVANCED_SENSING=ON .. && make -j4
