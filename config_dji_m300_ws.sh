@@ -6,8 +6,7 @@ echo "(3) Skip installation for pytorch"
 read system
 
 . /opt/ros/noetic/setup.bash
-sudo apt install ros-${ROS_DISTRO}-nmea-msgs libsdl2-dev libgoogle-glog-dev -y
-sudo apt install ros-${ROS_DISTRO}-rosserial-msgs ros-noetic-${ROS_DISTRO}-msgs -y
+sudo apt install ros-${ROS_DISTRO}-nmea-msgs libsdl2-dev libgoogle-glog-dev ros-${ROS_DISTRO}-rosserial-msgs ros-${ROS_DISTRO}-vision-msgs -y
 
 pip3 install pyserial
 

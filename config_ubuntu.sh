@@ -16,7 +16,7 @@ case $codename in
 esac
 
 echo "============================================="
-echo "Where are located?"
+echo "Where are you located?"
 echo "(1) China"
 echo "(2) Canada"
 read location
@@ -73,10 +73,14 @@ echo "============================================="
 echo "Install QT5? (y/n)"
 read qt5
 
+echo "============================================="
+echo "Install LaTex? (y/n)"
+read latex
+
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
-sudo apt install curl wget libopencv-dev libsuitesparse-dev libeigen3-dev cmake python git libboost-all-dev zip unzip make gcc g++ vlc libgoogle-glog-dev libfmt-dev build-essential -y
+sudo apt install curl wget libopencv-dev libsuitesparse-dev libeigen3-dev cmake python git libboost-all-dev zip unzip make gcc g++ vlc libgoogle-glog-dev libfmt-dev build-essential vim -y
 
 # set correct time for dual boot
 timedatectl set-local-rtc 1
@@ -155,6 +159,11 @@ fi
 ## Install Qt5:
 if [ ${qt5} == "y" ]; then
     echo "install Qt5 not yet supported"
+fi
+
+## Install LaTex:
+if [ ${latex} == "y" ]; then
+    sudo apt install texlive-full -y
 fi
 
 ## for Python source
