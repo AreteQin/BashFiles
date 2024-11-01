@@ -77,6 +77,10 @@ echo "============================================="
 echo "Install LaTex? (y/n)"
 read latex
 
+echo "============================================="
+echo "Install Docker? (y/n)"
+read docker
+
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
@@ -164,6 +168,11 @@ fi
 ## Install LaTex:
 if [ ${latex} == "y" ]; then
     sudo apt install texlive-full -y
+fi
+
+## Install Docker:
+if [ ${docker} == "y" ]; then
+    bash ./install_docker.sh
 fi
 
 ## for Python source
