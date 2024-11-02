@@ -1,22 +1,35 @@
 #!/bin/bash
 
-echo "Have you installed CUDA and Ceres manually? (y/n) "
+echo "Have you installed CUDA manually? (y/n) "
 read cuda
 
 case ${cuda} in
+    "n")
+        echo "Installing Ceres"
+        cd ~/Downloads/BashFiles/
+        ./install_cuda.sh
+        . ~/.bashrc
+        ;;
+esac
+
+echo "Have you installed Ceres manually? (y/n) "
+read ceres
+
+case ${ceres} in
     "y")
         echo "Downloading Sophus..."
         ;;
     "n")
-        echo "Please install CUDA and Ceres first"
-        echo "Exiting..."
-        exit
+        echo "Installing Ceres"
+        cd ~/Downloads/BashFiles/
+        ./install_ceres.sh
         ;;
 esac
 
 cd ~
 git clone https://github.com/strasdat/Sophus.git
 cd Sophus
+git checkout tags/1.22.10
 mkdir build
 cd build
 

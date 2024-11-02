@@ -14,6 +14,7 @@ case ${ceres} in
         cmake ..
         make -j6
         sudo make install
+        echo "export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
         ;;
     "n")
         echo "Please install Ceres first"
