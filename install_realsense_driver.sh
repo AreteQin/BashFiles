@@ -1,7 +1,6 @@
 echo "============================================="
 echo "Installing Intel Realsense driver, choose platform"
-echo "(1) x86_64 with Ubuntu lower than 24.04"
-echo "(2) x86_64 with Ubuntu 24.04"
+echo "(1) x86_64 Ubuntu"
 echo "(3) QCar"
 echo "(4) Raspberry Pi 5"
 read system
@@ -11,12 +10,6 @@ case ${system} in
         # For x86_64 with Ubuntu lower than 24.04
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
         sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main" -u
-        sudo apt install librealsense2-dkms librealsense2-utils librealsense2-dev librealsense2-dbg -y
-        ;;
-    "2")
-        # For x86_64 with Ubuntu 24.04
-        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
-        sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo jammy main" -u
         sudo apt install librealsense2-dkms librealsense2-utils librealsense2-dev librealsense2-dbg -y
         ;;
     "3")
