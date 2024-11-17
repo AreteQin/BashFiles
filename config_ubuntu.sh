@@ -81,6 +81,10 @@ echo "============================================="
 echo "Install Docker? (y/n)"
 read docker
 
+echo "============================================="
+echo "Install ollama? (y/n)"
+read ollama
+
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
@@ -173,6 +177,12 @@ fi
 ## Install Docker:
 if [ ${docker} == "y" ]; then
     bash ./install_docker.sh
+fi
+
+## Install ollama:
+if [ ${ollama} == "y" ]; then
+    curl -fsSL https://ollama.com/install.sh | sh
+    ollama pull llama3.2
 fi
 
 ## for Python source
