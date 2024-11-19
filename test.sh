@@ -1,17 +1,6 @@
 #! /bin/bash
-
-codename=$(lsb_release -c | awk '{print $2}')
-
-case $codename in
-    "impish")
-        echo "Ubuntu 22.04 LTS"
-        ;;
-    "focal")
-        echo "Ubuntu 20.04 LTS"
-        ;;
-    "bionic")
-        echo "Ubuntu 18.04 LTS"
-        echo "Not supported!"
-        exit
-        ;;
-esac
+google-chrome https://github.com/ollama/ollama
+echo "============================================="
+echo "please type the ollama version you want to install according to the webpage just opened: "
+read ollama
+echo ${ollama}

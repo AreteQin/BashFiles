@@ -182,7 +182,11 @@ fi
 ## Install ollama:
 if [ ${ollama} == "y" ]; then
     curl -fsSL https://ollama.com/install.sh | sh
-    ollama pull llama3.2
+    google-chrome https://github.com/ollama/ollama
+    echo "============================================="
+    echo "please type the ollama version you want to install according to the webpage just opened: "
+    read ollama
+    ollama pull ${ollama}
 fi
 
 ## for Python source
