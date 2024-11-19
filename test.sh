@@ -1,6 +1,17 @@
 #! /bin/bash
-google-chrome https://github.com/ollama/ollama
+
 echo "============================================="
-echo "please type the ollama version you want to install according to the webpage just opened: "
-read ollama
-echo ${ollama}
+echo "Where are you located?"
+echo "(1) China"
+echo "(2) Canada"
+read location
+
+## for Python source
+case ${location} in
+"1")
+    echo "1!"
+    ;;
+"2")
+    echo "2!"
+    ;;
+esac

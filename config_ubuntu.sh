@@ -3,16 +3,16 @@
 codename=$(lsb_release -c | awk '{print $2}')
 
 case $codename in
-    "impish")
-        echo "Ubuntu 22.04 LTS"
-        ;;
-    "focal")
-        echo "Ubuntu 20.04 LTS"
-        ;;
-    "*")
-        echo "Not supported Ubuntu version!"
-        exit
-        ;;
+"impish")
+    echo "Ubuntu 22.04 LTS"
+    ;;
+"focal")
+    echo "Ubuntu 20.04 LTS"
+    ;;
+"*")
+    echo "Not supported Ubuntu version!"
+    exit
+    ;;
 esac
 
 echo "============================================="
@@ -191,11 +191,11 @@ fi
 
 ## for Python source
 case ${location} in
-    "1")
-        pip3 config set global.i	ndex-url https://pypi.tuna.tsinghua.edu.cn/simple
-        echo "Done!"
-        ;;
-    "2")
-        echo "Done!"
-        ;;
+"1")
+    pip3 config set global.i ndex-url https://pypi.tuna.tsinghua.edu.cn/simple
+    echo "Done!"
+    ;;
+"2")
+    echo "Done!"
+    ;;
 esac
