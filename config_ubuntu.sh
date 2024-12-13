@@ -85,6 +85,10 @@ echo "============================================="
 echo "Install ollama? (y/n)"
 read ollama
 
+echo "============================================="
+echo "Install Anaconda? (y/n)"
+read anaconda
+
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
@@ -157,6 +161,11 @@ fi
 ## Install Office:
 if [ ${office} == "y" ]; then
     bash ./install_onlyoffice.sh
+fi
+
+## Install Anaconda:
+if [ ${anaconda} == "y" ]; then
+    bash ./install_anaconda.sh
 fi
 
 ## Install CUDA:
