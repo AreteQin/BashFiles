@@ -36,3 +36,5 @@ conda install -c fvcore -c conda-forge fvcore && pip install black usort flake8 
 
 # Anaconda Cloud
 conda install pytorch3d -c pytorch3d
+
+pip install 'git+https://github.com/facebookresearch/pytorch3d.git@stable'
