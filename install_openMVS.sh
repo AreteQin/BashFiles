@@ -14,7 +14,7 @@ fi
 
 cd ~
 #Clone OpenMVS
-git clone --recurse-submodules https://github.com/cdcseacave/openMVS.git
+git clone --recurse-submodules https://github.com/cdcseacave/openMVS.git --branch v2.3.0
 
 #Make build directory:
 cd openMVS
@@ -31,4 +31,4 @@ cmake --build . -j4
 #Install OpenMVS library (optional):
 sudo cmake --install .
 
-echo "export PATH=${PATH}:$(pwd)/bin" >> ~/.bashrc
+echo "export PATH=\${PATH}:$(pwd)/bin" >> ~/.bashrc
