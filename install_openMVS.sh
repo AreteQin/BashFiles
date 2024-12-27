@@ -23,7 +23,7 @@ mkdir make
 cd make
 
 #Run CMake:
-cmake .. -DCMAKE_CUDA_ARCHITECTURES="$GPU_COMPUTE_CAPABILITY" -DVCG_ROOT="../vcglib"
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_CUDA_ARCHITECTURES="$GPU_COMPUTE_CAPABILITY" -DVCG_ROOT="../vcglib"
 
 #Build:
 cmake --build . -j4
