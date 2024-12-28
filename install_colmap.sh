@@ -20,6 +20,7 @@ git checkout 3.11.1
 mkdir build
 cd build
 cmake .. -GNinja -DCMAKE_CUDA_ARCHITECTURES="$GPU_COMPUTE_CAPABILITY"
+# cmake .. -GNinja -DCUDA_FLAGS="-arch=sm_75"
 ninja
 sudo ninja install
 colmap gui
