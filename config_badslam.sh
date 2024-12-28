@@ -1,13 +1,3 @@
-# ROS
-echo "============================================="
-echo "Have you installed ROS? [y/n]"
-read ros
-
-if [ "$ros" = "n" ]; then
-    echo "Please install ROS first"
-    exit
-fi
-
 # CUDA
 echo "============================================="
 echo "Have you installed CUDA? [y/n]"
@@ -32,6 +22,15 @@ read g2o
 echo "============================================="
 echo "Have you installed OpenGV? [y/n]"
 read opengv
+
+# Sophus
+echo "============================================="
+echo "Have you installed Sophus? [y/n]"
+read sophus
+
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt-get install libopencv-dev libsuitesparse-dev libglew-dev libxmu-dev libxi-dev libgl-dev libx11-dev xorg-dev libglu1-mesa-dev freeglut3-dev libglew1.5 libglew1.5-dev libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev libeigen3-dev cmake libfontconfig1 perl python git libglew-dev libboost-all-dev zip unzip make gcc g++ wget build-essential qt5-default qtcreator libqt5x11extras5-dev -y
 
 if [ "$realsense" = "n" ]; then
     ./install_realsense_driver.sh
@@ -59,9 +58,15 @@ if [ "$opengv" = "n" ]; then
     ./install_opengv.sh
 fi
 
-cd ~
-mkdir -p bad_vio_ws/src
-cd bad_vio_ws/src
-git clone git@github.com:AreteQin/bad_vio_ros.git
-cd ..
-catkin build
+# Sophus
+if [ "$sophus" = "n" ]; then
+    ./install_sophus.sh
+fi
+
+cd ~/Downloads
+git clone git@github.com:AreteQin/badslam_without_loop_detector.git
+
+cd ~/Downloads/badslam_without_loop_detector
+mkdir build_RelWithDebInfo && cd build_RelWithDebInfo 
+cmake  -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CUDA_FLAGS="-arch=sm_75" .. 
+make -j4 badslam

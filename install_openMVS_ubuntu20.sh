@@ -11,5 +11,5 @@ cd ../..
 git clone https://github.com/AreteQin/openMVS_Ubuntu20.git
 cd openMVS_Ubuntu20
 mkdir openMVS_build && cd openMVS_build
-cmake .. -DCMAKE_BUILD_TYPE=Release -DVCG_ROOT="../../vcglib"
-make -j8
+cmake .. -DCMAKE_BUILD_TYPE=Release -DVCG_ROOT="../../vcglib" -DCMAKE_CUDA_FLAGS="-arch=sm_75"
+make -j6
