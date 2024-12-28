@@ -1,5 +1,5 @@
-sudo apt-get -y install git cmake libpng-dev libjpeg-dev libtiff-dev libglu1-mesa-dev freeglut3-dev libglew-dev libglfw3-dev libcgal-dev libcgal-qt5-dev
-cd ~/Downloads
+sudo apt -y install git cmake libpng-dev libjpeg-dev libtiff-dev libglu1-mesa-dev freeglut3-dev libglew-dev libglfw3-dev libcgal-dev libcgal-qt5-dev
+cd ~
 mkdir openMVS && cd openMVS
 git clone https://github.com/cdcseacave/VCG.git vcglib
 git clone https://gitlab.com/libeigen/eigen.git --branch 3.4
@@ -13,3 +13,4 @@ cd openMVS_Ubuntu20
 mkdir openMVS_build && cd openMVS_build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DVCG_ROOT="../../vcglib" -DCMAKE_CUDA_FLAGS="-arch=sm_75"
 make -j6
+echo "export PATH=\${PATH}:$(pwd)/bin" >> ~/.bashrc

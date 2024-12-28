@@ -1,3 +1,14 @@
+# Extract Ubuntu version
+UBUNTU_VERSION=$(lsb_release -r | awk '{print $2}')
+
+# Print the Ubuntu version
+echo "Ubuntu version: $UBUNTU_VERSION"
+
+if [ "$UBUNTU_VERSION" = "20.04" ]; then
+    ./install_openMVS_ubuntu20.sh
+    exit
+fi
+
 sudo apt install libglfw3-dev python3-dev libboost-all-dev libopencv-dev -y
 
 echo "Confirm your GPU Compute Capability according to the opened website"
@@ -9,7 +20,7 @@ echo "Have you installed CUDA Toolkit? (y/n)"
 read CUDA_TOOLKIT
 
 if [ "$CUDA_TOOLKIT" = "n" ]; then
-    sudo apt install nvidia-cuda-toolkit nvidia-cuda-toolkit-gcc -y
+    ./install_cuda.sh
 fi
 
 cd ~
