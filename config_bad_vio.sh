@@ -33,6 +33,8 @@ echo "============================================="
 echo "Have you installed OpenGV? [y/n]"
 read opengv
 
+cd ~/Downloads/BashFiles
+
 if [ "$realsense" = "n" ]; then
     ./install_realsense_driver.sh
 fi
