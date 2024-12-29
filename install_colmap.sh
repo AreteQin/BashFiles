@@ -7,13 +7,20 @@ read GPU_COMPUTE_CAPABILITY
 echo "Have you installed CUDA Toolkit? (y/n)"
 read CUDA_TOOLKIT
 
-sudo apt install git cmake ninja-build build-essential libboost-program-options-dev libboost-graph-dev libboost-system-dev libeigen3-dev libflann-dev libfreeimage-dev libmetis-dev libgoogle-glog-dev libgtest-dev libgmock-dev libsqlite3-dev libglew-dev qtbase5-dev libqt5opengl5-dev libcgal-dev libceres-dev -y
+echo "Have you installed Ceres? (y/n)"
+read ceres
 
 cd ~/Downloads/BashFiles
 
 if [ "$CUDA_TOOLKIT" = "n" ]; then
     ./install_cuda.sh
 fi
+
+if [ "$ceres" = "n" ]; then
+    ./install_ceres.sh
+fi
+
+sudo apt install git cmake ninja-build build-essential libboost-program-options-dev libboost-graph-dev libboost-system-dev libeigen3-dev libflann-dev libfreeimage-dev libmetis-dev libgoogle-glog-dev libgtest-dev libgmock-dev libsqlite3-dev libglew-dev qtbase5-dev libqt5opengl5-dev libcgal-dev -y
 
 cd ~
 git clone https://github.com/colmap/colmap.git --branch 3.11.1

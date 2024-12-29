@@ -69,6 +69,7 @@ cd ~/Downloads
 git clone git@github.com:AreteQin/badslam_without_loop_detector.git
 
 cd ~/Downloads/badslam_without_loop_detector
-mkdir build_RelWithDebInfo && cd build_RelWithDebInfo 
+mkdir build_RelWithDebInfo
+cd build_RelWithDebInfo 
 cmake  -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CUDA_FLAGS="-arch=sm_75" .. 
 make -j4 badslam

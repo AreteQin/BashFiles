@@ -42,10 +42,6 @@ echo "Install Clion? (y/n)"
 read clion
 
 echo "============================================="
-echo "Install WeChat? (y/n)"
-read wechat
-
-echo "============================================="
 echo "Configure Git user name and email? (y/n)"
 read git
 
@@ -137,11 +133,6 @@ if [ ${clion} == "y" ]; then
     sudo snap install clion --classic
     echo "============================================="
     echo "CLion installed!"
-fi
-
-## Install WeChat:
-if [ ${wechat} == "y" ]; then
-    bash./install_wechat.sh
 fi
 
 if [ ${tailscale} == "y" ]; then

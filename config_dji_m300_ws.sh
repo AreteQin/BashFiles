@@ -12,7 +12,11 @@ pip3 install pyserial
 
 cd ~/Downloads
 git clone https://github.com/AreteQin/dji_osdk_410_opencv4.git
-cd dji_osdk_410_opencv4/ && mkdir build && cd build && cmake -DADVANCED_SENSING=ON .. && make -j4
+cd dji_osdk_410_opencv4/
+mkdir build
+cd build
+cmake -DADVANCED_SENSING=ON ..
+make -j4
 sudo make install
 cd ~
 git clone https://github.com/AreteQin/m300_ws.git
