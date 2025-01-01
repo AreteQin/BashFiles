@@ -88,6 +88,16 @@ read anaconda
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
+
+## Install Nvidia Driver:
+# Select "Using NVIDIA driver metapackage from nvidia-driver-535(proprietary)"
+# This maybe working
+if [ ${nvidia} == "y" ]; then
+    sudo apt install nvidia-driver-535 -y
+    echo "============================================="
+    echo "Nvidia driver is installed!"
+fi
+
 sudo apt install curl wget libopencv-dev libsuitesparse-dev libeigen3-dev cmake python git libboost-all-dev zip unzip make gcc g++ vlc libgoogle-glog-dev libfmt-dev build-essential vim -y
 
 # set correct time for dual boot
@@ -112,15 +122,6 @@ fi
 
 if [ ${git} == "y" ]; then
     git config --global user.email "qinqiaomeng@outlook.com" && git config --global user.name "qin"
-fi
-
-## Install Nvidia Driver:
-# Select "Using NVIDIA driver metapackage from nvidia-driver-535(proprietary)"
-# This maybe working
-if [ ${nvidia} == "y" ]; then
-    sudo apt install nvidia-driver-535 -y
-    echo "============================================="
-    echo "Nvidia driver is installed!"
 fi
 
 ## Install VSCode:
