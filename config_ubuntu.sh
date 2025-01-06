@@ -1,5 +1,17 @@
 #! /bin/bash
 
+echo "Have you installed Nvidia driver? (y/n)"
+read driver
+if [ ${driver} != "y" ]; then
+    echo "============================================="
+    echo "Please install Nvidia driver first! "
+    echo "Run the following command:"
+    echo "=============================================="
+    echo "sudo apt install nvidia-driver-535 -y"
+    echo "============================================="
+    sudo reboot
+fi
+
 codename=$(lsb_release -c | awk '{print $2}')
 
 case $codename in
@@ -138,11 +150,6 @@ fi
 
 if [ ${tailscale} == "y" ]; then
     curl -fsSL https://tailscale.com/install.sh | sh
-    sudo tailscale up
-    echo "============================================="
-    echo "Tailscale installed. Please use the link above to login. "
-    echo "When done, press any key to continue..."
-    read -n 1 -s
 fi
 
 ## Configure cloudflare:
@@ -194,9 +201,10 @@ fi
 case ${location} in
 "1")
     pip3 config set global.i ndex-url https://pypi.tuna.tsinghua.edu.cn/simple
-    echo "Done!"
-    ;;
-"2")
-    echo "Done!"
-    ;;
 esac
+
+if [ ${tailscale} == "y" ]; then
+    sudo tailscale up
+    echo "============================================="
+    echo "Tailscale installed. Please use the link above to login. "
+fi
