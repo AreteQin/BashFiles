@@ -2,13 +2,14 @@
 
 echo "Have you installed Nvidia driver? (y/n)"
 read driver
-if [ ${driver} != "y" ]; then
+if [ ${driver} != "n" ]; then
     echo "============================================="
-    echo "Please install Nvidia driver first! "
-    echo "Run the following command:"
-    echo "=============================================="
-    echo "sudo apt install nvidia-driver-535 -y"
+    echo "Installing Nvidia driver..."
+    sudo apt install nvidia-driver-535 -y
     echo "============================================="
+    echo "Nvidia driver is installed!"
+    echo "Press any key to reboot your computer to enable the driver and run this script again."
+    read -n 1 -s
     sudo reboot
 fi
 
@@ -127,11 +128,6 @@ if [ ${chrome} == "y" ]; then
     bash ./install_chrome.sh
 fi
 
-## Configure VNC:
-if [ ${vnc} == "y" ]; then
-    bash ./enable_vnc.sh
-fi
-
 if [ ${git} == "y" ]; then
     git config --global user.email "qinqiaomeng@outlook.com" && git config --global user.name "qin"
 fi
@@ -167,11 +163,6 @@ if [ ${anaconda} == "y" ]; then
     bash ./install_anaconda.sh
 fi
 
-## Install CUDA:
-if [ ${cuda} == "y" ]; then
-    bash ./install_cuda.sh
-fi
-
 ## Install Qt5:
 if [ ${qt5} == "y" ]; then
     echo "install Qt5 not yet supported"
@@ -202,6 +193,16 @@ case ${location} in
 "1")
     pip3 config set global.i ndex-url https://pypi.tuna.tsinghua.edu.cn/simple
 esac
+
+## Configure VNC:
+if [ ${vnc} == "y" ]; then
+    bash ./enable_vnc.sh
+fi
+
+## Install CUDA:
+if [ ${cuda} == "y" ]; then
+    bash ./install_cuda.sh
+fi
 
 if [ ${tailscale} == "y" ]; then
     sudo tailscale up
