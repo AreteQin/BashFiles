@@ -165,7 +165,7 @@ fi
 
 ## Install Qt5:
 if [ ${qt5} == "y" ]; then
-    echo "install Qt5 not yet supported"
+    sudo apt install qt5-default libqt5x11extras5-dev libqt5svg5-dev -y
 fi
 
 ## Install LaTex:

@@ -27,28 +27,9 @@ fi
 
 cd ~
 
-git clone --recurse-submodules https://github.com/cdcseacave/openMVS.git --branch v2.3.0
-
 if [ "$UBUNTU_VERSION" = "20.04" ]; then
-    cat <<EOF
-===============================
-Please modify the file ~/openMVS/src/CMakeLists.txt as follows:
-===============================
-#FIND_PACKAGE(Eigen3 REQUIRED)
-#if(EIGEN3_FOUND)
-        set(EIGEN3_INCLUDE_DIR "/home/qin/openMVS/eigen/install/include/eigen3/")
-	LIST(APPEND OpenMVS_EXTRA_INCLUDES ${EIGEN3_INCLUDE_DIR})
-	INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
-	LIST(APPEND OpenMVS_DEFINITIONS -D_USE_EIGEN)
-	ADD_DEFINITIONS(${EIGEN3_DEFINITIONS})
-	SET(_USE_EIGEN TRUE)
-	MESSAGE(STATUS "Eigen ${EIGEN3_VERSION} found (include: ${EIGEN3_INCLUDE_DIR})")
-#endif()
-===============================
-EOF
-    gedit ~/openMVS/CMakeLists.txt
-    echo "Press any key to continue..."
-    read -n 1 -s
+    git clone https://github.com/AreteQin/openMVS_Ubuntu20.git
+    mv openMVS_Ubuntu20 openMVS
     cd openMVS
     git clone https://gitlab.com/libeigen/eigen.git --branch 3.4
     cd eigen/
@@ -56,10 +37,12 @@ EOF
     cd build
     cmake .. -DCMAKE_INSTALL_PREFIX=../install
     make install
+else
+    git clone --recurse-submodules https://github.com/cdcseacave/openMVS.git --branch v2.3.0
 fi
 cd ~/openMVS
 
-sudo apt install libglfw3-dev python3-dev libboost-all-dev libopencv-dev -y
+sudo apt install libglfw3-dev python3-dev libboost-all-dev libopencv-dev libcgal-dev libglew-dev -y
 
 #Make build directory:
 git clone -b devel https://github.com/cnr-isti-vclab/vcglib.git

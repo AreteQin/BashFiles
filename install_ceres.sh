@@ -12,7 +12,7 @@ case ${cuda} in
         # cmake ..
         # make -j3
         # sudo make install
-        sudo apt install libceres-dev
+        sudo apt install libceres-dev -y
         ;;
     "n")
         echo "Please install CUDA first"
