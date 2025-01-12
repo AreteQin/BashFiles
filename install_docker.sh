@@ -16,4 +16,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 sudo docker run hello-world
 
+# Add your user to the docker group to run docker without sudo:
+# sudo usermod -aG docker $USER
+
 # wget -qO- https://get.docker.com/ | sh
