@@ -1,5 +1,10 @@
-echo "Please install the Pangolin first and continue"
+echo "Have you installed Pangolin"
 read pangolin
+
+if [ ${pangolin} == "n" ]; then
+    cd ~/Downloads/BashFiles/
+    bash ./install_pangolin.sh
+fi
 
 echo "export ROS_PACKAGE_PATH=\${ROS_PACKAGE_PATH}:~/ORB_SLAM3_Ubuntu_20/Examples_old/ROS" >> ~/.bashrc
 

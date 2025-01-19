@@ -1,18 +1,5 @@
 #! /bin/bash
 
-echo "Have you installed Nvidia driver? (y/n)"
-read driver
-if [ ${driver} != "n" ]; then
-    echo "============================================="
-    echo "Installing Nvidia driver..."
-    sudo apt install nvidia-driver-535 -y
-    echo "============================================="
-    echo "Nvidia driver is installed!"
-    echo "Press any key to reboot your computer to enable the driver and run this script again."
-    read -n 1 -s
-    sudo reboot
-fi
-
 codename=$(lsb_release -c | awk '{print $2}')
 
 case $codename in
@@ -27,6 +14,23 @@ case $codename in
     exit
     ;;
 esac
+
+echo "Have you installed Nvidia driver? (y/n)"
+read driver
+if [ ${driver} != "n" ]; then
+    echo "============================================="
+    echo "Installing Nvidia driver..."
+    if [ ${codename} == "focal" ]; then
+        sudo apt install nvidia-driver-535 -y
+    else
+        sudo apt install nvidia-driver-535 -y
+    fi
+    echo "============================================="
+    echo "Nvidia driver is installed!"
+    echo "Press any key to reboot your computer to enable the driver and run this script again."
+    read -n 1 -s
+    sudo reboot
+fi
 
 echo "============================================="
 echo "Where are you located?"
@@ -158,24 +162,25 @@ if [ ${office} == "y" ]; then
     bash ./install_onlyoffice.sh
 fi
 
-## Install Anaconda:
-if [ ${anaconda} == "y" ]; then
-    bash ./install_anaconda.sh
-fi
-
 ## Install Qt5:
 if [ ${qt5} == "y" ]; then
     sudo apt install qt5-default libqt5x11extras5-dev libqt5svg5-dev -y
 fi
 
-## Install LaTex:
-if [ ${latex} == "y" ]; then
-    sudo apt install texlive-full -y
-fi
-
 ## Install Docker:
 if [ ${docker} == "y" ]; then
     bash ./install_docker.sh
+fi
+
+## for Python source
+case ${location} in
+"1")
+    pip3 config set global.i ndex-url https://pypi.tuna.tsinghua.edu.cn/simple
+esac
+
+## Install LaTex:
+if [ ${latex} == "y" ]; then
+    sudo apt install texlive-full -y
 fi
 
 ## Install ollama:
@@ -188,11 +193,10 @@ if [ ${ollama} == "y" ]; then
     ollama pull ${ollama}
 fi
 
-## for Python source
-case ${location} in
-"1")
-    pip3 config set global.i ndex-url https://pypi.tuna.tsinghua.edu.cn/simple
-esac
+## Install Anaconda:
+if [ ${anaconda} == "y" ]; then
+    bash ./install_anaconda.sh
+fi
 
 ## Configure VNC:
 if [ ${vnc} == "y" ]; then
