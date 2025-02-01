@@ -102,6 +102,10 @@ echo "============================================="
 echo "Install Anaconda? (y/n)"
 read anaconda
 
+echo "============================================="
+echo "Install MeshLab? (y/n)"
+read meshlab
+
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
@@ -134,6 +138,10 @@ fi
 
 if [ ${git} == "y" ]; then
     git config --global user.email "qinqiaomeng@outlook.com" && git config --global user.name "qin"
+fi
+
+if [ ${meshlab} == "y" ]; then
+    sudo apt install meshlab -y
 fi
 
 ## Install VSCode:
