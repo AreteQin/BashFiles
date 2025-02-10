@@ -17,7 +17,7 @@ esac
 
 echo "Have you installed Nvidia driver? (y/n)"
 read driver
-if [ ${driver} != "n" ]; then
+if [ ${driver} != "y" ]; then
     echo "============================================="
     echo "Installing Nvidia driver..."
     if [ ${codename} == "focal" ]; then
@@ -49,10 +49,6 @@ read chrome
 echo "============================================="
 echo "Install VSCode? (y/n)"
 read vscode
-
-echo "============================================="
-echo "Install Nvidia Driver 535? (y/n)"
-read nvidia
 
 echo "============================================="
 echo "Install Clion? (y/n)"
@@ -110,16 +106,7 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
 
-## Install Nvidia Driver:
-# Select "Using NVIDIA driver metapackage from nvidia-driver-535(proprietary)"
-# This maybe working
-if [ ${nvidia} == "y" ]; then
-    sudo apt install nvidia-driver-535 -y
-    echo "============================================="
-    echo "Nvidia driver is installed!"
-fi
-
-sudo apt install curl wget libopencv-dev libsuitesparse-dev libeigen3-dev cmake python git libboost-all-dev zip unzip make gcc g++ vlc libgoogle-glog-dev libfmt-dev build-essential vim -y
+sudo apt install curl wget libopencv-dev libsuitesparse-dev libeigen3-dev cmake python git libboost-all-dev zip unzip make gcc g++ vlc libgoogle-glog-dev libfmt-dev build-essential vim curl -y
 
 # set correct time for dual boot
 timedatectl set-local-rtc 1
