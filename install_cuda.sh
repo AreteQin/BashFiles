@@ -22,4 +22,4 @@ echo "export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64\${LD_LIBRARY_PATH:+:\${L
 # Reload ~/.bashrc to apply changes
 source ~/.bashrc
 
-# sudo apt install nvidia-cuda-toolkit nvidia-cuda-toolkit-gcc -y # too old CUDA version
+# sudo apt install nvidia-cuda-toolkit nvidia-cuda-toolkit-gcc -y # the default version is too old CUDA version
