@@ -106,7 +106,7 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt autoremove -y
 
-sudo apt install curl wget libopencv-dev libsuitesparse-dev libeigen3-dev cmake python git libboost-all-dev zip unzip make gcc g++ vlc libgoogle-glog-dev libfmt-dev build-essential vim -y
+sudo apt install curl wget libopencv-dev libsuitesparse-dev libeigen3-dev cmake git libboost-all-dev zip unzip make gcc g++ vlc libgoogle-glog-dev libfmt-dev build-essential vim -y
 
 # set correct time for dual boot
 timedatectl set-local-rtc 1
