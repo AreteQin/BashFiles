@@ -63,6 +63,10 @@ echo "Configure cloudflare? (y/n)"
 read cloudflare
 
 echo "============================================="
+echo "Enable RDP? (y/n)"
+read rdp
+
+echo "============================================="
 echo "Enable VNC? (y/n)"
 read vnc
 
@@ -160,6 +164,11 @@ fi
 ## Install Qt5:
 if [ ${qt5} == "y" ]; then
     sudo apt install qt5-default libqt5x11extras5-dev libqt5svg5-dev -y
+fi
+
+## Enable RDP:
+if [ ${rdp} == "y" ]; then
+    bash ./enable_rdp.sh
 fi
 
 ## Install Docker:
