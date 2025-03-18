@@ -13,6 +13,7 @@ case $codename in
     ;;
 esac
 
+cd ~
 git clone https://github.com/abseil/abseil-cpp.git
 cd abseil-cpp
 mkdir build && cd build
