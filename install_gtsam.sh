@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # sudo add-apt-repository ppa:borglab/gtsam-release-4.0
 # sudo apt update  # not necessary since Bionic
 # # Install:
@@ -15,7 +13,4 @@ mkdir build && cd build
 cmake -DGTSAM_POSE3_EXPMAP=ON -DGTSAM_ROT3_EXPMAP=ON -DGTSAM_USE_SYSTEM_EIGEN=ON -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF ..
 make -j8
 sudo make install
-## add 
-## export LD_LIBRARY_PATH=/usr/local/lib/:$LD_LIBRARY_PATH
-## to ~/.bashrc 
-vim ~/.bashrc
+echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH":/usr/local/lib/ >> ~/.bashrc
