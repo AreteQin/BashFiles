@@ -14,13 +14,15 @@ cd Pangolin
 ./scripts/install_prerequisites.sh recommended
 
 # Configure and build
-mkdir build && cd build
+mkdir build
+cd build
 
 case ${system} in
     "1")
         cmake ..
         ;;
     "2")
+        sudo apt install python3.9-dev -y
         cmake .. -DPython_EXECUTABLE=/usr/bin/python3.8 # for Jetson Xavier Ubuntu 20
         ;;
 esac
