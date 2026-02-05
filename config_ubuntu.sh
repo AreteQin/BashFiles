@@ -47,6 +47,10 @@ echo "Install Google Chrome? (y/n)"
 read chrome
 
 echo "============================================="
+echo "Install MicroSoft Edge? (y/n)"
+read edge
+
+echo "============================================="
 echo "Install VSCode? (y/n)"
 read vscode
 
@@ -125,6 +129,10 @@ fi
 
 if [ ${chrome} == "y" ]; then
     bash ./install_chrome.sh
+fi
+
+if [ ${edge} == "y" ]; then
+    bash ./install_edge.sh
 fi
 
 if [ ${git} == "y" ]; then
