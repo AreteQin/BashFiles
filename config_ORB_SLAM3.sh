@@ -16,9 +16,9 @@ read orbslam3_ros1
 
 cd ~
 
-git clone https://github.com/AreteQin/ORB_SLAM3_Ubuntu_20.git
+git clone https://github.com/AreteQin/ORB_SLAM3_OpenCV4.git
 
-cd ORB_SLAM3_Ubuntu_20
+cd ORB_SLAM3_OpenCV4
 
 sudo ldconfig
 
