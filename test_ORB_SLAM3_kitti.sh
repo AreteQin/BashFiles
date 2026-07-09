@@ -1,18 +1,21 @@
 #!/bin/bash
-export PATH="$HOME/.local/bin:$PATH"
-# Exit on any unexpected errors
+
+# Exit immediately if a command exits with a non-zero status
 set -e
+
+# Force bash to find the local 'evo' binaries if installed via pip --user
+export PATH="$HOME/.local/bin:$PATH"
 
 # ==============================================================================
 # 1. USER CONFIGURATION
 # ==============================================================================
 ORB_SLAM3_DIR="/home/qin/ORB_SLAM3_OpenCV4"          # Path to compiled ORB-SLAM3 root
-KITTI_DIR="/home/qin//Downloads/data_odometry_gray/dataset"        # Directory containing "sequences/"
+KITTI_DIR="/home/qin/Downloads/data_odometry_gray/dataset"        # Directory containing "sequences/"
 POSES_DIR="/home/qin/Downloads/data_odometry_poses/dataset/poses"  # Directory containing ground truth 00.txt to 10.txt
-OUTPUT_DIR="/home/qin/orb_slam3_evaluation"       # Destination for trajectories and plots
+OUTPUT_DIR="/home/qin/orb_slam3_evaluation"  # Destination for trajectories and plots
 
-# Run mode choice: "mono" or "stereo"
-MODE="mono"
+# Run mode choice: Set to "mono" or "stereo"
+MODE="stereo"
 
 # ==============================================================================
 # 2. SANITY CHECKS
@@ -59,42 +62,7 @@ for i in {00..10}; do
     fi
 
     # Run the SLAM system
-    # Note: adding a timeout or running normally. 
     $EXEC Vocabulary/ORBvoc.txt "$YAML_PATH" "$KITTI_DIR/sequences/${i}"
-
-    #    ==============================================================================
-    # 4. TARGET THE CORRECT NATIVE KITTI ODOMETRY FORMAT
-    # ==============================================================================
-    if [ "$MODE" = "stereo" ]; then
-        TRAJ_FILE="f_stereo_kitti.txt"
-    else
-        TRAJ_FILE="f_mono_kitti.txt"
-    fi
-
-    if [ ! -f "$TRAJ_FILE" ]; then
-        echo "Error: Expected KITTI output matrix $TRAJ_FILE not found."
-        echo "Tracking may have failed completely or aborted early."
-        continue
-    fi
-
-    # Move and systematically isolate the tracking results
-    ESTIMATED_TRAJ="$OUTPUT_DIR/seq_${i}_estimated.txt"
-    mv "$TRAJ_FILE" "$ESTIMATED_TRAJ"
-    
-    # Clean up residual TUM files so they don't clutter the directory next iteration
-    rm -f CameraTrajectory.txt KeyFrameTrajectory.txt
-    
-    echo "Trajectory saved to: $ESTIMATED_TRAJ"
-
-    if [ -z "$TRAJ_FILE" ]; then
-        echo "Warning: No trajectory output discovered for sequence ${i}. Tracking may have failed."
-        continue
-    fi
-
-    # Move and systematically isolate the tracking results
-    ESTIMATED_TRAJ="$OUTPUT_DIR/seq_${i}_estimated.txt"
-    mv "$TRAJ_FILE" "$ESTIMATED_TRAJ"
-    echo "Trajectory saved to: $ESTIMATED_TRAJ"
 
     # ==============================================================================
     # 4. TRACK AND ISOLATE TRAJECTORY FILES BY ACTIVE MODE
@@ -133,25 +101,32 @@ for i in {00..10}; do
         TIMES_FILE="$KITTI_DIR/sequences/${i}/times.txt"
         
         if [ -f "$GT_POSE" ] && [ -f "$TIMES_FILE" ]; then
-            echo "Evaluating Monocular trajectory (Aligning timestamps & resolving scale)..."
+            echo "Converting KITTI Ground Truth matrices to timestamped TUM trajectories..."
+            GT_TUM="${OUTPUT_DIR}/seq_${i}_gt_tum.txt"
             
-            # 1. Temporarily map the KITTI ground truth to TUM format using sequence timestamps
-            evo_traj kitti "$GT_POSE" --timestamps_file "$TIMES_FILE" --save_as_tum
-            
-            # evo outputs the converted file to the current directory using the base name (e.g., 00.tum)
-            GT_TUM="${i}.tum"
-            
-            # 2. Run APE using TUM matching rules
-            # Note: '-s' is CRITICAL here; it enables Sim(3) alignment to resolve scale factors
+            # Inline Python utility to cleanly map the 12-column pose to an 8-column TUM format using Scipy
+            python3 -c "
+import sys, numpy as np
+from scipy.spatial.transform import Rotation as R
+with open('$GT_POSE', 'r') as f: p_lines = f.readlines()
+with open('$TIMES_FILE', 'r') as f: t_lines = f.readlines()
+out = []
+for idx in range(min(len(p_lines), len(t_lines))):
+    toks = list(map(float, p_lines[idx].strip().split()))
+    if len(toks) != 12: continue
+    mat = np.array(toks).reshape(3, 4)
+    q = R.from_matrix(mat[:, :3]).as_quat() # Output format: [x, y, z, w]
+    out.append(f'{t_lines[idx].strip()} {mat[0,3]} {mat[1,3]} {mat[2,3]} {q[0]} {q[1]} {q[2]} {q[3]}\n')
+with open('$GT_TUM', 'w') as f: f.writelines(out)
+"
+            echo "Evaluating Monocular trajectory (Resolving scale factor using Sim3 alignment)..."
             evo_ape tum "$GT_TUM" "$ESTIMATED_TRAJ" \
-                -r full \
+                -r trans_part \
                 -va \
                 -s \
-                --plot_mode xy \
-                --save_plot "$OUTPUT_DIR/seq_${i}_error_plot.png" \
                 --save_results "$OUTPUT_DIR/seq_${i}_results.zip"
                 
-            # Clean up the temporary TUM ground truth file from the working directory
+            # Clean up the generated temporary ground truth file
             rm -f "$GT_TUM"
         else
             echo "Missing ground truth ($GT_POSE) or times.txt ($TIMES_FILE). Skipping evaluation."
@@ -162,6 +137,7 @@ for i in {00..10}; do
     rm -f CameraTrajectory.txt KeyFrameTrajectory.txt f_mono_kitti.txt f_stereo_kitti.txt
     
     echo "Sequence ${i} complete!"
+    echo "------------------------------------------------------------------"
     sleep 2
 done
 
