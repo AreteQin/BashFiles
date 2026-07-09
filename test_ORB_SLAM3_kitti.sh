@@ -68,7 +68,7 @@ for i in {00..10}; do
     # 4. TRACK AND ISOLATE TRAJECTORY FILES BY ACTIVE MODE
     # ==============================================================================
     if [ "$MODE" = "stereo" ]; then
-        TRAJ_FILE="f_stereo_kitti.txt"
+        TRAJ_FILE="CameraTrajectory.txt" 
         if [ ! -f "$TRAJ_FILE" ]; then
             echo "Error: Expected KITTI stereo matrix $TRAJ_FILE not found."
             continue
@@ -79,11 +79,11 @@ for i in {00..10}; do
         GT_POSE="$POSES_DIR/${i}.txt"
         if [ -f "$GT_POSE" ]; then
             echo "Evaluating Stereo trajectory using native KITTI alignment..."
+            
+            # FIXED: Removed plotting parameters to bypass the matplotlib crash
             evo_ape kitti "$GT_POSE" "$ESTIMATED_TRAJ" \
-                -r full \
+                -r trans_part \
                 -va \
-                --plot_mode xy \
-                --save_plot "$OUTPUT_DIR/seq_${i}_error_plot.png" \
                 --save_results "$OUTPUT_DIR/seq_${i}_results.zip"
         fi
         
