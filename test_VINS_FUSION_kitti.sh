@@ -19,7 +19,7 @@ cd "$REPO_DIR"
 
 # Optional: Source your ROS 2 overlay workspace setup if needed
 # source /opt/ros/foxy/setup.bash
-# source ./install/setup.bash
+source ./install/setup.bash
 
 # ==============================================================================
 # 2. RUN VINS-FUSION ESTIMATOR LOOP
@@ -43,7 +43,7 @@ for i in {0..10}; do
     fi
 
     # Run the specific sequence tracking node
-    ros2 run vins kitti_odom_test "$CONFIG" "${DATA_BASE_DIR}/${SEQ}/"
+    ros2 run vins kitti_odom_test "$CONFIG" "${DATA_BASE_DIR}/${SEQ}/" || true
 
     # Protect result file from overwriting by renaming it specifically to the sequence
     if [ -f "${VINS_OUTPUT_DIR}/vio.txt" ]; then
