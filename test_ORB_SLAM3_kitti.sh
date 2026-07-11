@@ -13,6 +13,7 @@ ORB_SLAM3_DIR="/home/qin/ORB_SLAM3_OpenCV4"          # Path to compiled ORB-SLAM
 KITTI_DIR="/home/qin/Downloads/data_odometry_gray/dataset"        # Directory containing "sequences/"
 POSES_DIR="/home/qin/Downloads/data_odometry_poses/dataset/poses"  # Directory containing ground truth 00.txt to 10.txt
 OUTPUT_DIR="/home/qin/orb_slam3_evaluation"  # Destination for trajectories and plots
+EVO_ENV_ACTIVATE="$HOME/Downloads/VINS-Fusion-ROS2/.venv/bin/activate"
 
 # Run mode choice: Set to "mono" or "stereo"
 MODE="stereo"
@@ -37,7 +38,7 @@ fi
 # 3. BENCHMARK LOOP (00 to 10)
 # ==============================================================================
 cd "$ORB_SLAM3_DIR"
-
+source "$EVO_ENV_ACTIVATE"
 for i in {00..10}; do
     echo "=================================================================="
     echo " Processing KITTI Sequence: ${i} | Mode: ${MODE}"
