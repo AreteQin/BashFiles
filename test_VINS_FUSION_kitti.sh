@@ -10,7 +10,7 @@ REPO_DIR="$HOME/Downloads/VINS-Fusion-ROS2"
 DATA_BASE_DIR="$HOME/Downloads/data_odometry_gray/dataset/sequences"
 POSE_BASE_DIR="$HOME/Downloads/data_odometry_poses/dataset/poses"
 VINS_OUTPUT_DIR="/home/qin/vins_output"
-EVO_ENV_ACTIVATE="$HOME/Downloads/VINS-Fusion-ROS2/evo_env/bin/activate"
+EVO_ENV_ACTIVATE="$HOME/Downloads/VINS-Fusion-ROS2/.venv/bin/activate"
 
 echo "===================================================================="
 echo " Starting Batch Processing for KITTI Sequences 00 to 10"
