@@ -6,7 +6,7 @@ VINS_WS="$HOME/Downloads/VINS-Fusion-ROS2"
 CONFIG_DIR="$VINS_WS/config/euroc"            # temp configs MUST live here!
 ORIG_CONFIG="$CONFIG_DIR/euroc_stereo_imu_config.yaml"
 BASE_DIR="$HOME/Downloads/machine_hall"
-OUTPUT_BASE="$HOME/output"
+OUTPUT_BASE="$HOME/output_vins_fusion_euroc"
 
 TOPICS=(/cam0/image_raw /cam1/image_raw /imu0)
 READY_TIMEOUT=30    # max seconds to wait for node subscriptions
@@ -142,12 +142,17 @@ for i in "${!bags[@]}"; do
     kill_ros2_node "loop_fusion_node" "$loop_pid"
     rm -f "$temp_config"
 
+    # --- RENAME: vio.csv -> mh0x.csv ---
+    if [ -f "$output_dir/vio.csv" ]; then
+        mv "$output_dir/vio.csv" "$output_dir/${bag_name}.csv"
+    fi
+
     # --- Validate result ---
-    vio_csv="$output_dir/vio.csv"
+    vio_csv="$output_dir/${bag_name}.csv"
     if [ -s "$vio_csv" ]; then
-        echo "  ✓ $bag_name done — vio.csv has $(wc -l < "$vio_csv") lines"
+        echo "  ✓ $bag_name done — ${bag_name}.csv has $(wc -l < "$vio_csv") lines"
     else
-        echo "  ✗ $bag_name FAILED — vio.csv empty/missing. Check:"
+        echo "  ✗ $bag_name FAILED — ${bag_name}.csv empty/missing. Check:"
         echo "      $output_dir/vins_log.txt"
     fi
     echo ""
