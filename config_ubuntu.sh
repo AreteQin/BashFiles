@@ -127,6 +127,59 @@ if [ ${cn_input} == "y" ]; then
     ibus-daemon -d -x -r
 fi
 
+## for VPN Proxy
+case ${location} in
+"1")
+    echo "============================================="
+    echo "Location is China. Installing Clash Verge..."
+    
+    # Download and install a recent release of clash-verge-rev
+    wget -qO /tmp/clash-verge.deb https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.6.6/clash-verge_1.6.6_amd64.deb
+    sudo dpkg -i /tmp/clash-verge.deb
+    sudo apt-get install -f -y
+    rm /tmp/clash-verge.deb
+
+    echo "============================================="
+    echo "Clash Verge installed."
+    echo "Please open Clash Verge from your application menu, manually configure your profiles, and turn the system proxy ON."
+    
+    while true; do
+        read -p "Type 'y' and press Enter once you have confirmed Clash Verge is connected and running: " conf_clash
+        if [ "${conf_clash}" == "y" ]; then
+            echo "Proxy confirmed. Proceeding with the remaining installations..."
+            break
+        else
+            echo "Awaiting confirmation..."
+        fi
+    done
+
+    # Exporting proxy variables for the current script session to ensure subsequent downloads work
+    export HTTP_PROXY="http://127.0.0.1:7897"
+    export HTTPS_PROXY="http://127.0.0.1:7897"
+    export http_proxy="$HTTP_PROXY"
+    export https_proxy="$HTTPS_PROXY"
+    export ALL_PROXY="socks5://127.0.0.1:7897"
+    export all_proxy="$ALL_PROXY"
+
+    proxy_on() {
+        export HTTP_PROXY="http://127.0.0.1:7897"
+        export HTTPS_PROXY="http://127.0.0.1:7897"
+        export http_proxy="$HTTP_PROXY"
+        export https_proxy="$HTTPS_PROXY"
+
+        echo "Proxy enabled: $HTTP_PROXY"
+    }
+
+    proxy_off() {
+        unset HTTP_PROXY HTTPS_PROXY
+        unset http_proxy https_proxy
+        unset ALL_PROXY all_proxy
+
+        echo "Proxy disabled"
+    }
+    ;;
+esac
+
 if [ ${chrome} == "y" ]; then
     bash ./install_chrome.sh
 fi
@@ -187,7 +240,8 @@ fi
 ## for Python source
 case ${location} in
 "1")
-    pip3 config set global.i ndex-url https://pypi.tuna.tsinghua.edu.cn/simple
+    pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+    ;;
 esac
 
 ## Install LaTex:
